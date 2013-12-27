@@ -4,7 +4,7 @@
   <title><![CDATA[AIへ秒読み]]></title>
   <link href="http://kensak.github.io/atom.xml" rel="self"/>
   <link href="http://kensak.github.io/"/>
-  <updated>2013-12-27T22:41:20+09:00</updated>
+  <updated>2013-12-27T23:03:47+09:00</updated>
   <id>http://kensak.github.io/</id>
   <author>
     <name><![CDATA[榊原 研]]></name>
@@ -12,5 +12,20 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[最初のポスト]]></title>
+    <link href="http://kensak.github.io/blog/2013/12/27/first-post/"/>
+    <updated>2013-12-27T22:48:21+09:00</updated>
+    <id>http://kensak.github.io/blog/2013/12/27/first-post</id>
+    <content type="html"><![CDATA[<p>This is the first post.
+<!-- more -->
+More lines.</p>
+
+<script type="math/tex; mode=display">
+P(E)   = {n \choose k} p^k (1-p)^{ n-k}
+</script>
+]]></content>
+  </entry>
   
 </feed>
