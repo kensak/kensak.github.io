@@ -4,7 +4,7 @@
   <title><![CDATA[AIへ秒読み]]></title>
   <link href="http://kensak.github.io/atom.xml" rel="self"/>
   <link href="http://kensak.github.io/"/>
-  <updated>2013-12-27T23:38:16+09:00</updated>
+  <updated>2013-12-27T23:47:22+09:00</updated>
   <id>http://kensak.github.io/</id>
   <author>
     <name><![CDATA[榊原 研]]></name>
@@ -24,8 +24,9 @@ title: “最初のポスト”
 date: 2013-12-27 22:48:21 +0900
 comments: true
 categories: 
-—
-最初のポスト。
+—</p>
+
+<p>最初のポスト。
 <!-- more --></p>
 
 <p>続きの行。</p>
