@@ -9,7 +9,7 @@
   <meta name="author" content="榊原 研">
 
   
-  <meta name="description" content="Blog Archives Recent Posts GitHub Repos Status updating&#8230; @kensak on GitHub $(document).ready(function(){ if (!window.jXHR){ var jxhr = &hellip;">
+  <meta name="description" content="Welcome to my website! Inline We can render inline math like $a^2 + b^2 = c^2$ by surrounding the MathJax markup with single dollar symbols like so &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -29,7 +29,36 @@
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
   
 
 </head>
@@ -56,22 +85,55 @@
 </form>
   
 <ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="/blog">Blog</a></li>
+  <li><a href="https://github.com/kensak">Projects</a></li>
 </ul>
 
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div class="page-content">
+<article role="article">
+  
+  <h2 id="welcome-to-my-website">Welcome to my website!</h2>
+
+<h3 id="inline">Inline</h3>
+
+<p>We can render inline math like $a^2 + b^2 = c^2$ by surrounding the MathJax markup with single dollar symbols like so: <code>$a^2 + b^2 = c^2$</code>.</p>
+
+<h3 id="block">Block</h3>
+
+<p>To generate standalone blocks of math, add double dollar symbols on new lines before and after the markup.</p>
+
+<pre><code>$$
+P(E)   = {n \choose k} p^k (1-p)^{ n-k}
+$$
+</code></pre>
+
+<script type="math/tex; mode=display">
+P(E)   = {n \choose k} p^k (1-p)^{ n-k}
+</script>
+
+  
+    <footer>
+      
+      
+        <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://kensak.github.io/index.html" data-via="KenSakakibar" data-counturl="http://kensak.github.io/index.html" >Tweet</a>
   
   
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+  
 </div>
+
+      
+    </footer>
+  
+</article>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
@@ -84,7 +146,7 @@
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <a href="https://github.com/kensak">@kensak</a> on GitHub
@@ -117,10 +179,12 @@
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
   Copyright &copy; 2013 - 榊原 研 -
+  <span class="credit">Designed by <a href="http://stchangg.com">@stchangg</a></span> -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
