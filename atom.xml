@@ -4,7 +4,7 @@
   <title><![CDATA[AIへ秒読み]]></title>
   <link href="http://kensak.github.io/atom.xml" rel="self"/>
   <link href="http://kensak.github.io/"/>
-  <updated>2013-12-27T23:22:27+09:00</updated>
+  <updated>2013-12-27T23:33:47+09:00</updated>
   <id>http://kensak.github.io/</id>
   <author>
     <name><![CDATA[榊原 研]]></name>
@@ -34,6 +34,26 @@ categories:
 $$
 P(E)   = {n \choose k} p^k (1-p)^{ n-k}
 $$</p>
+
+<p>コードの例。
+&lt;div class=&#8217;bogus-wrapper&#8217;&gt;<notextile><figure class="code">&lt;div class=&#8221;highlight&#8221;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#8221;gutter&#8221;&gt;&lt;pre class=&#8221;line-numbers&#8221;&gt;<span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#8217;code&#8217;&gt;&lt;pre&gt;<code class=""><span class="line">// For each sample (=row) in the input, 'dropoutRatio' by ratio of columns shall be set to zero.
+</span><span class="line">static void Dropout(cv::Mat &amp;inputs, cv::Mat &amp;dropped, const real &amp;dropoutRatio)
+</span><span class="line">{
+</span><span class="line">  cv::Mat mask(inputs.size(), CV_8U);
+</span><span class="line">  cv::RNG rng(time(NULL));
+</span><span class="line">  makeDropoutMask(mask, dropoutRatio, rng);
+</span><span class="line">
+</span><span class="line">  inputs.copyTo(dropped, mask);
+</span><span class="line">}</span></code>&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</figure></notextile>&lt;/div&gt;</p>
 ]]></content>
   </entry>
   
