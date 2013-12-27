@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[AIへ秒読み]]></title>
   <link href="http://kensak.github.io/atom.xml" rel="self"/>
   <link href="http://kensak.github.io/"/>
-  <updated>2013-12-27T22:24:19+09:00</updated>
+  <updated>2013-12-27T22:34:24+09:00</updated>
   <id>http://kensak.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
-    
+    <name><![CDATA[榊原 研]]></name>
+    <email><![CDATA[ken.sakakibar@gmail.com]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
