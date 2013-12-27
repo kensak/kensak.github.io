@@ -4,7 +4,7 @@
   <title><![CDATA[AIへ秒読み]]></title>
   <link href="http://kensak.github.io/atom.xml" rel="self"/>
   <link href="http://kensak.github.io/"/>
-  <updated>2013-12-27T23:47:22+09:00</updated>
+  <updated>2013-12-27T23:48:24+09:00</updated>
   <id>http://kensak.github.io/</id>
   <author>
     <name><![CDATA[榊原 研]]></name>
@@ -14,19 +14,11 @@
 
   
   <entry>
-    <title type="html"><![CDATA[First Post]]></title>
+    <title type="html"><![CDATA[最初のポスト]]></title>
     <link href="http://kensak.github.io/blog/2013/12/27/first-post/"/>
-    <updated>2013-12-27T00:00:00+09:00</updated>
+    <updated>2013-12-27T22:48:21+09:00</updated>
     <id>http://kensak.github.io/blog/2013/12/27/first-post</id>
-    <content type="html"><![CDATA[<p>﻿—
-layout: post
-title: “最初のポスト”
-date: 2013-12-27 22:48:21 +0900
-comments: true
-categories: 
-—</p>
-
-<p>最初のポスト。
+    <content type="html"><![CDATA[<p>最初のポスト。
 <!-- more --></p>
 
 <p>続きの行。</p>
