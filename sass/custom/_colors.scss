@@ -7,7 +7,7 @@ $GRAY_LIGHT: #f0f0f0;
 $main-bg: #ffffff;
 $page-bg: #ccc;
 $header-bg: #b2ce53;
-$title-color: #f0f0f0;
+$title-color: #444;
 $subtitle-color: #eb1c54;
 
 $nav-bg: #eee;
@@ -36,8 +36,8 @@ $solarized: light;
 //$base00:          #657b83; //dark gray
 //$base0:           #839496; //medium gray
 //$base1:           #93a1a1; //medium light gray
-//$base2:           #eee8d5; //cream
-//$base3:           #fdf6e3; //white
+$base2:           #c0c0c0; // border
+$base3:           #eee; // bg
 //$solar-yellow:    #b58900;
 //$solar-orange:    #cb4b16;
 //$solar-red:       #dc322f;
@@ -46,7 +46,6 @@ $solarized: light;
 //$solar-blue:      #268bd2;
 //$solar-cyan:      #2aa198;
 //$solar-green:     #859900;
-
 
 /* Non highlighted code colors */
 //$pre-bg: $base03;
