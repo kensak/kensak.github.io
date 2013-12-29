@@ -1,19 +1,20 @@
 article {
-  padding-top: 1em;
+  padding-top: 0.5em;
   a { @extend .force-wrap; }
   header {
     position: relative;
-    padding-top: 2em;
-    padding-bottom: 1em;
+    padding-top: 1.3em;
+    padding-bottom: 1.5em;
     margin-bottom: 1em;
     background: $img-border bottom left repeat-x;
     h1 {
+      font-size: 1em;
       margin: 0;
       a { text-decoration: none;
         &:hover { text-decoration: underline; } }
     }
     p {
-      font-size: .9em;
+      font-size: 0.7em;
       color: $text-color-light;
       margin: 0;
       &.meta {
@@ -23,8 +24,8 @@ article {
       }
     }
     @media only screen and (min-width: 768px) {
-      margin-bottom: 1.5em;
-      padding-bottom: 1em;
+      margin-bottom: 0.5em;
+      padding-bottom: 0.5em;
       background: $img-border bottom left repeat-x;
     }
   }
@@ -40,7 +41,7 @@ article {
     padding-bottom: 1em;
     background: $img-border bottom left repeat-x;
     font-size: 2.0em; font-style: italic;
-    line-height: 1.3em;
+    line-height: 1.2em;
   }
   img, video, .flash-video {
     @extend .flex-content;
@@ -67,7 +68,7 @@ article {
     }
   }
   > footer {
-    padding-bottom: 2.5em;
+    padding-bottom: 0em;
     margin-top: 2em;
     @extend .sans;
     p.meta {
@@ -88,20 +89,22 @@ article + article {
   }
 }
 #content .blog-index {
-  padding: { top: 0; bottom: 0; }
-  article { padding-top: 2em; }
+  padding: { top: 0; bottom: 0em; }
+  article { padding-top: .5em; }
   article header { background: none; padding-bottom: 0; }
   article h1 {
-    font-size: 2.2em;
+    font-size: 1em;
     a { color: inherit; &:hover { color: $link-color-hover; } }
   }
   a[rel=full-article] {
-    background: darken($main-bg, 5);
+    font-size: 0.7em;
+    background: darken($main-bg, 20);
     display: inline-block;
     padding: .4em .8em;
     margin-right: .5em;
     text-decoration: none;
-    color: mix($text-color, $text-color-light);
+    //color: mix($text-color, $text-color-light);
+    color: #000;
     @extend .serif;
     @include transition(background-color .5s);
     &:hover {
@@ -112,7 +115,8 @@ article + article {
   }
   footer {
     @extend .sans;
-    margin-top: 1em;
+    margin-top: 0em;
+    margin-bottom: 1em;
   }
 }
 

@@ -4,30 +4,30 @@
 
 $GRAY_LIGHT: #f0f0f0;
 
-$main-bg: $GRAY_LIGHT;
-$page-bg: $GRAY_LIGHT;
-$header-bg: $GRAY_LIGHT;
-$title-color: #555;
-$subtitle-color: #bbb;
+$main-bg: #ffffff;
+$page-bg: #ccc;
+$header-bg: #b2ce53;
+$title-color: #f0f0f0;
+$subtitle-color: #eb1c54;
 
-$nav-bg: #fff;
+$nav-bg: #eee;
 $nav-bg-front: none;
-$nav-bg-back: #fff;
-$nav-border-top: darken($nav-bg, 10);
+$nav-bg-back: #eee;
+$nav-border-top: #ccc;
 $nav-border-bottom: $nav-border-top;
 $nav-border-left: $nav-bg;
 $nav-border-right: $nav-bg;
 
-$sidebar-bg: $GRAY_LIGHT;
+$sidebar-bg: #eee;
 $sidebar-link-color: saturate(#526f9a, 10);
 $sidebar-link-color-hover: darken(#7ab662, 9);
 
-$footer-bg: $GRAY_LIGHT;
+$footer-bg: #aaa;
 $footer-bg-front: image-url('noise.png');
 $footer-bg-back: none;
 
 /* To use the light Solarized highlighting theme uncomment the following line */
-//$solarized: light;
+$solarized: light;
 
 /* If you want to tweak the Solarized colors you can do that here */
 //$base03:          #002b36; //darkest blue
