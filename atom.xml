@@ -4,7 +4,7 @@
   <title><![CDATA[AIへ秒読み]]></title>
   <link href="http://kensak.github.io/atom.xml" rel="self"/>
   <link href="http://kensak.github.io/"/>
-  <updated>2013-12-29T21:05:49+09:00</updated>
+  <updated>2013-12-29T21:24:37+09:00</updated>
   <id>http://kensak.github.io/</id>
   <author>
     <name><![CDATA[榊原 研]]></name>
@@ -39,15 +39,16 @@ $$</p>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">// For each sample (=row) in the input, 'dropoutRatio' by ratio of columns shall be set to zero.
-</span><span class="line">static void Dropout(cv::Mat &amp;inputs, cv::Mat &amp;dropped, const real &amp;dropoutRatio)
-</span><span class="line">{
-</span><span class="line">  cv::Mat mask(inputs.size(), CV_8U);
-</span><span class="line">  cv::RNG rng(time(NULL));
-</span><span class="line">  makeDropoutMask(mask, dropoutRatio, rng);
+</pre></td><td class="code"><pre><code class="cpp"><span class="line"><span class="c1">// For each sample (=row) in the input, &#39;dropoutRatio&#39; by ratio of columns shall be set to zero.</span>
+</span><span class="line"><span class="k">static</span> <span class="kt">void</span> <span class="n">Dropout</span><span class="p">(</span><span class="n">cv</span><span class="o">::</span><span class="n">Mat</span> <span class="o">&amp;</span><span class="n">inputs</span><span class="p">,</span> <span class="n">cv</span><span class="o">::</span><span class="n">Mat</span> <span class="o">&amp;</span><span class="n">dropped</span><span class="p">,</span> <span class="k">const</span> <span class="n">real</span> <span class="o">&amp;</span><span class="n">dropoutRatio</span><span class="p">)</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">  <span class="n">cv</span><span class="o">::</span><span class="n">Mat</span> <span class="n">mask</span><span class="p">(</span><span class="n">inputs</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">CV_8U</span><span class="p">);</span>
+</span><span class="line">  <span class="n">cv</span><span class="o">::</span><span class="n">RNG</span> <span class="n">rng</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span>
+</span><span class="line">  <span class="n">makeDropoutMask</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">dropoutRatio</span><span class="p">,</span> <span class="n">rng</span><span class="p">);</span>
 </span><span class="line">
-</span><span class="line">  inputs.copyTo(dropped, mask);
-</span><span class="line">}</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class="line">  <span class="n">inputs</span><span class="p">.</span><span class="n">copyTo</span><span class="p">(</span><span class="n">dropped</span><span class="p">,</span> <span class="n">mask</span><span class="p">);</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 ]]></content>
   </entry>
