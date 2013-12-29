@@ -8,7 +8,7 @@ categories:
 二日がかりでようやく Github + Octopress のサイトを立ち上げました。
 <!-- more -->
 
-数式もかけます。
+数式も書けます。
 $$
 P(E)   = {n \choose k} p^k (1-p)^{ n-k}
 $$
