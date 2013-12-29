@@ -98,13 +98,14 @@ article + article {
   }
   a[rel=full-article] {
     font-size: 0.7em;
-    background: darken($main-bg, 20);
+    // color: mix($text-color, $text-color-light);
+    color: #e68326;
+    // background: darken($main-bg, 20);
+    background: #ffffff;
     display: inline-block;
-    padding: .4em .8em;
+    // padding: .4em .8em;
     margin-right: .5em;
     text-decoration: none;
-    //color: mix($text-color, $text-color-light);
-    color: #000;
     @extend .serif;
     @include transition(background-color .5s);
     &:hover {

@@ -41,3 +41,16 @@ static void Dropout(cv::Mat &inputs, cv::Mat &dropped, const real &dropoutRatio)
 - コンソールに表示されるメッセージはよく読もう！実はエラーが起きているのに気づかなかったことがしばしば。
 - markdown ファイルで日本語を使うときは BOM なしの UTF-8 で保存する。編集には Notepad++ を使うと便利。
 - Solarized を使うには Python が必要となるので、Windows 用の Python を必要に応じてインストールし、Git Bash のパスに追加する必要がある。~/.bash_profile に export PATH="/c/Ruby193/bin:/c/Python27:$PATH" という風に書いておく。
+
+###よく使うコマンド
+{% codeblock %}
+rake new_post["post title"]  # 新しいポストのソースを生成する。
+rake generate    　 # サイトの静的ページを public ディレクトリに生成する。
+rake preview        # 下書きを http://localhost:4000 でチェックする。
+rake deploy         # public の内容をリポジトリの master に push し、サイトを更新する。
+
+# ソースをコミットしてリポジトリの source に push する。
+git add .
+git commit -m 'your comment'
+git push origin source
+{% endcodeblock %}
