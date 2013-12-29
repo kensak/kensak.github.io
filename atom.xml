@@ -4,7 +4,7 @@
   <title><![CDATA[AIへ秒読み]]></title>
   <link href="http://kensak.github.io/atom.xml" rel="self"/>
   <link href="http://kensak.github.io/"/>
-  <updated>2013-12-29T21:24:37+09:00</updated>
+  <updated>2013-12-29T22:28:01+09:00</updated>
   <id>http://kensak.github.io/</id>
   <author>
     <name><![CDATA[榊原 研]]></name>
@@ -14,21 +14,19 @@
 
   
   <entry>
-    <title type="html"><![CDATA[２番目のポスト（テスト）]]></title>
-    <link href="http://kensak.github.io/blog/2013/12/29/second-post/"/>
-    <updated>2013-12-29T12:03:36+09:00</updated>
-    <id>http://kensak.github.io/blog/2013/12/29/second-post</id>
-    <content type="html"><![CDATA[<p>最初のポスト。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。
+    <title type="html"><![CDATA[初ポスト]]></title>
+    <link href="http://kensak.github.io/blog/2013/12/29/first-post/"/>
+    <updated>2013-12-29T21:03:36+09:00</updated>
+    <id>http://kensak.github.io/blog/2013/12/29/first-post</id>
+    <content type="html"><![CDATA[<p>二日がかりでようやく Github + Octopress のサイトを立ち上げました。
 <!-- more --></p>
 
-<p>続きの行。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。</p>
-
-<p>数式の例。
+<p>数式もかけます。
 $$
 P(E)   = {n \choose k} p^k (1-p)^{ n-k}
 $$</p>
 
-<p>コードの例。</p>
+<p>Solarized によるソースコードの表示。</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -39,7 +37,9 @@ $$</p>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="cpp"><span class="line"><span class="c1">// For each sample (=row) in the input, &#39;dropoutRatio&#39; by ratio of columns shall be set to zero.</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="cpp"><span class="line"><span class="c1">// For each sample (=row) in the input,</span>
+</span><span class="line"><span class="c1">// &#39;dropoutRatio&#39; by ratio of columns shall be set to zero.</span>
 </span><span class="line"><span class="k">static</span> <span class="kt">void</span> <span class="n">Dropout</span><span class="p">(</span><span class="n">cv</span><span class="o">::</span><span class="n">Mat</span> <span class="o">&amp;</span><span class="n">inputs</span><span class="p">,</span> <span class="n">cv</span><span class="o">::</span><span class="n">Mat</span> <span class="o">&amp;</span><span class="n">dropped</span><span class="p">,</span> <span class="k">const</span> <span class="n">real</span> <span class="o">&amp;</span><span class="n">dropoutRatio</span><span class="p">)</span>
 </span><span class="line"><span class="p">{</span>
 </span><span class="line">  <span class="n">cv</span><span class="o">::</span><span class="n">Mat</span> <span class="n">mask</span><span class="p">(</span><span class="n">inputs</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">CV_8U</span><span class="p">);</span>
@@ -50,30 +50,24 @@ $$</p>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[最初のポスト]]></title>
-    <link href="http://kensak.github.io/blog/2013/12/27/first-post/"/>
-    <updated>2013-12-27T22:48:21+09:00</updated>
-    <id>http://kensak.github.io/blog/2013/12/27/first-post</id>
-    <content type="html"><![CDATA[<p>最初のポスト。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。
-<!-- more --></p>
+<h3 id="section">参考にしたサイト</h3>
+<ul>
+  <li>まずは<a href="http://octopress.org/docs/">Octopress 公式ドキュメント</a></li>
+  <li>当方 OS が Windows 7 のため、<a href="http://stb.techelex.com/setup-octopress-on-windows7/">このサイト</a>の手順に従ってインストールしました。実は一度インストールしてから変になってしまって、Cygwin を使う方法に変更して再構築をかけたのですが泥沼にはまり、結局、再びこちらの方法に戻って現在に到っております。</li>
+  <li><a href="https://github.com/stchangg/mathy">mathy というテーマ</a>は MathJax という仕組みをサポートしていてい、上のように数式を表示できるようになります。これを元に色々カスタマイズしました。</li>
+  <li>静的サイトのジェネレーター<a href="http://jekyllrb.com/docs/home/">Jekyll のドキュメント</a>。octopress/sourceにユーザーが用意したファイルを元に、Jekyll が octopress/public にサイトのファイル一式を作ってくれる。Jekyll を理解しないとサイトのカスタマイズができない。</li>
+</ul>
 
-<p>続きの行。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。</p>
+<p>その他にも多くのサイトを参考にしましたが、ほとんどは上記のリンクからたどって行けます。</p>
 
-<p>数式の例。
-$$
-P(E)   = {n \choose k} p^k (1-p)^{ n-k}
-$$</p>
-
-<p>コードの例。</p>
-
-<pre><code>git add .
-git commit -m "comment"
-git push origin source
-</code></pre>
+<h3 id="section-1">はまった点</h3>
+<ul>
+  <li>Github のプロファイルは、少なくとも名前と Email は前もって埋めておく。</li>
+  <li>rake setup_github_pages でレポジトリの url を尋ねられるが、 git@… の方ではなく https://… の方にしておくと SSH キーを作る必要がなくなるのでおすすめ。</li>
+  <li>コンソールに表示されるメッセージはよく読もう！実はエラーが起きているのに気づかなかったことがしばしば。</li>
+  <li>markdown ファイルで日本語を使うときは BOM なしの UTF-8 で保存する。編集には Notepad++ を使うと便利。</li>
+  <li>Solarized を使うには Python が必要となるので、Windows 用の Python を必要に応じてインストールし、Git Bash のパスに追加する必要がある。~/.bash_profile に export PATH=”/c/Ruby193/bin:/c/Python27:$PATH” という風に書いておく。</li>
+</ul>
 ]]></content>
   </entry>
   
