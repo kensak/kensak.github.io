@@ -4,7 +4,7 @@
   <title><![CDATA[AIへ秒読み]]></title>
   <link href="http://kensak.github.io/atom.xml" rel="self"/>
   <link href="http://kensak.github.io/"/>
-  <updated>2013-12-29T00:08:34+09:00</updated>
+  <updated>2013-12-29T21:05:49+09:00</updated>
   <id>http://kensak.github.io/</id>
   <author>
     <name><![CDATA[榊原 研]]></name>
@@ -14,14 +14,53 @@
 
   
   <entry>
+    <title type="html"><![CDATA[２番目のポスト（テスト）]]></title>
+    <link href="http://kensak.github.io/blog/2013/12/29/second-post/"/>
+    <updated>2013-12-29T12:03:36+09:00</updated>
+    <id>http://kensak.github.io/blog/2013/12/29/second-post</id>
+    <content type="html"><![CDATA[<p>最初のポスト。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。
+<!-- more --></p>
+
+<p>続きの行。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。</p>
+
+<p>数式の例。
+$$
+P(E)   = {n \choose k} p^k (1-p)^{ n-k}
+$$</p>
+
+<p>コードの例。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">// For each sample (=row) in the input, 'dropoutRatio' by ratio of columns shall be set to zero.
+</span><span class="line">static void Dropout(cv::Mat &amp;inputs, cv::Mat &amp;dropped, const real &amp;dropoutRatio)
+</span><span class="line">{
+</span><span class="line">  cv::Mat mask(inputs.size(), CV_8U);
+</span><span class="line">  cv::RNG rng(time(NULL));
+</span><span class="line">  makeDropoutMask(mask, dropoutRatio, rng);
+</span><span class="line">
+</span><span class="line">  inputs.copyTo(dropped, mask);
+</span><span class="line">}</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[最初のポスト]]></title>
     <link href="http://kensak.github.io/blog/2013/12/27/first-post/"/>
     <updated>2013-12-27T22:48:21+09:00</updated>
     <id>http://kensak.github.io/blog/2013/12/27/first-post</id>
-    <content type="html"><![CDATA[<p>最初のポスト。
+    <content type="html"><![CDATA[<p>最初のポスト。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。
 <!-- more --></p>
 
-<p>続きの行。</p>
+<p>続きの行。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。何か長い行をここにかきます。</p>
 
 <p>数式の例。
 $$
