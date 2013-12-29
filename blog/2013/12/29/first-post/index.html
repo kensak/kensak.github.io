@@ -184,6 +184,28 @@ $$</p>
   <li>markdown ファイルで日本語を使うときは BOM なしの UTF-8 で保存する。編集には Notepad++ を使うと便利。</li>
   <li>Solarized を使うには Python が必要となるので、Windows 用の Python を必要に応じてインストールし、Git Bash のパスに追加する必要がある。~/.bash_profile に export PATH=”/c/Ruby193/bin:/c/Python27:$PATH” という風に書いておく。</li>
 </ul>
+
+<h3 id="section-2">よく使うコマンド</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">rake new_post["post title"]  # 新しいポストのソースを生成する。
+</span><span class="line">rake generate    　 # サイトの静的ページを public ディレクトリに生成する。
+</span><span class="line">rake preview        # 下書きを http://localhost:4000 でチェックする。
+</span><span class="line">rake deploy         # public の内容をリポジトリの master に push し、サイトを更新する。
+</span><span class="line">
+</span><span class="line"># ソースをコミットしてリポジトリの source に push する。
+</span><span class="line">git add .
+</span><span class="line">git commit -m 'your comment'
+</span><span class="line">git push origin source</span></code></pre></td></tr></table></div></figure></notextile></div>
+
 </div>
 
 
@@ -224,6 +246,8 @@ $$</p>
     <p class="meta">
       
       
+        <a class="basic-alignment right" href="/blog/2013/12/29/maxout/" title="Next Post: ニューラルネットで tanh のかわりに max を使う">ニューラルネットで tanh のかわりに max を使う &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -235,6 +259,10 @@ $$</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/12/29/maxout/">ニューラルネットで Tanh のかわりに Max を使う</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/12/29/first-post/">初ポスト</a>

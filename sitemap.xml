@@ -2,23 +2,27 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://kensak.github.io/blog/2013/12/29/first-post/</loc>
-        <lastmod>2013-12-29T22:27:24+09:00</lastmod>
+        <lastmod>2013-12-29T23:22:25+09:00</lastmod>
+    </url>
+    <url>
+        <loc>http://kensak.github.io/blog/2013/12/29/maxout/</loc>
+        <lastmod>2013-12-30T00:51:45+09:00</lastmod>
     </url>
     <url>
         <loc>http://kensak.github.io/about/</loc>
-        <lastmod>2013-12-29T21:10:46+09:00</lastmod>
+        <lastmod>2013-12-29T22:57:53+09:00</lastmod>
     </url>
     <url>
         <loc>http://kensak.github.io/blog/archives/</loc>
-        <lastmod>2013-12-29T22:27:24+09:00</lastmod>
+        <lastmod>2013-12-30T00:51:45+09:00</lastmod>
     </url>
     <url>
         <loc>http://kensak.github.io/blog/</loc>
-        <lastmod>2013-12-29T22:27:24+09:00</lastmod>
+        <lastmod>2013-12-30T00:51:45+09:00</lastmod>
     </url>
     <url>
         <loc>http://kensak.github.io/</loc>
-        <lastmod>2013-12-29T22:27:24+09:00</lastmod>
+        <lastmod>2013-12-30T00:51:45+09:00</lastmod>
     </url>
     <url>
         <loc>http://kensak.github.io/robots.txt</loc>
