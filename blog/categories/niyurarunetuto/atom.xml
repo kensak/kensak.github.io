@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ニューラルネット | AIへ秒読み]]></title>
   <link href="http://kensak.github.io/blog/categories/niyurarunetuto/atom.xml" rel="self"/>
   <link href="http://kensak.github.io/"/>
-  <updated>2013-12-30T00:54:56+09:00</updated>
+  <updated>2013-12-30T02:16:23+09:00</updated>
   <id>http://kensak.github.io/</id>
   <author>
     <name><![CDATA[榊原 研]]></name>
@@ -19,7 +19,7 @@
     <updated>2013-12-29T23:26:44+09:00</updated>
     <id>http://kensak.github.io/blog/2013/12/29/maxout</id>
     <content type="html"><![CDATA[<p>とても似た内容の二つの論文を読んでみました。
-多層パーセプトロンのアクティベーション関数としてシグモイドや tanh のかわりに max を使うとテスト・エラーが小さくなる、という話です。</p>
+多層パーセプトロンのアクティベーション関数としてシグモイドや tanh のかわりに max を使うと文字認識などでの認識率が上がるよ、という話です。</p>
 
 <!-- more -->
 
