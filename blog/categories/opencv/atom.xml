@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: ニューラルネット | AIへ秒読み]]></title>
-  <link href="http://kensak.github.io/blog/categories/niyurarunetuto/atom.xml" rel="self"/>
+  <title><![CDATA[Category: OpenCV | AIへ秒読み]]></title>
+  <link href="http://kensak.github.io/blog/categories/opencv/atom.xml" rel="self"/>
   <link href="http://kensak.github.io/"/>
   <updated>2014-01-08T22:51:03+09:00</updated>
   <id>http://kensak.github.io/</id>
@@ -59,52 +59,6 @@ $$
 <p><strong>リファレンス</strong><br />
 [1] Geoffrey E. Hinton, Nitish Srivastava, Alex Krizhevsky, Ilya Sutskever, and Ruslan R.　Salakhutdinov. Improving neural networks by preventing co-adaptation of feature detectors.
 2012. arXiv:1207.0580.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Maxout: アクティベーション関数に Max を使う]]></title>
-    <link href="http://kensak.github.io/blog/2013/12/29/maxout/"/>
-    <updated>2013-12-29T23:26:44+09:00</updated>
-    <id>http://kensak.github.io/blog/2013/12/29/maxout</id>
-    <content type="html"><![CDATA[<p>とても似た内容の二つの論文を読んでみました。
-多層パーセプトロンのアクティベーション関数としてシグモイドや tanh のかわりに max を使うと文字認識などでの認識率が上がる、という話です。</p>
-
-<!-- more -->
-
-<p>[1] の maxout レイヤーでは、レイヤーの入力に重みを掛けてバイアスと一緒に足し合わせたあと、
-従来のように tanh やシグモイドなどの関数を適用するのではなく、
-出力をいくつかずつまとめてそれらの中の最大値を最終的な出力とする。</p>
-
-<p>これは、アクティベーション関数として恒等関数を使うパーセンプトロンまたは畳み込みレイヤーと、
-入力をいくつかずつ組にしてそれぞれの組の最大値のみを出力するレイヤーの２段階に分けて考えることも出来る。</p>
-
-<p>従来の畳み込みネットでは、畳み込みレイヤーの後に max pool レイヤーを入れて、例えば入力画像をサイズが 2x2 のサブ領域に分割し、それぞれの max を出力する、
-ということがおこなわれているが、やっている計算は maxout もこれと変わらない。
-ただ、従来の max pool レイヤーには、
-2次元イメージの特徴的なパターンのずれや回転などを吸収するという意味づけがされていたのに対し、
-maxout ではもっと本質的な役割を果たしている。</p>
-
-<p>この単純なアフィン変換と max からなるネットワークには、
-十分な数のノード／レイヤーを与えられれば、従来のシグモイドや tanh と同様に、どんな連続関数でも任意の精度で近似できる能力がある。
-イメージとしては、任意の連続関数はある凸関数 f, g を使って f - g と表すことができ、そして凸関数は十分な数の平面の max として近似できる、ということらしい。</p>
-
-<p>[2] の local winner-take-all (LWTA) も maxout と似ている。
-ただ、同じ組の中の最大値ではない値にも出力ノードが与えられ、これは 0 を出力するという点が違う。
-しかしこの違いが重要なものかどうかはよく分からない。
-LWTA を使うと一旦記憶したものを忘れにくいと説明しているが、
-これは単に 0 を出力するノードにも重みが与えられていてパラメターの数が多いからかもしれない。</p>
-
-<p>MNIST など実際のデータを使った実験では、maxout や LWTA と dropout を組み合わせた方法が従来の記録を更新する結果を出している。</p>
-
-<p>しかし tanh の計算やバックプロパゲーション・フェーズでの grad の計算がいらなくなるのはちょっと不思議な感じがする。
-今までだれもこのことを指摘しなかったのも不思議。案外こういった単純な確認が重要なのかも。
-double 型の tanh の計算の並列化のためにC++ AMP を使って GPU 上で計算しようとすると、Windows 7 では double 型は制限つきサポートになっていて、
-precise_math の関数が使えず割り算もできず大変だったのだが、今後は max の計算だけを考えればよいのかな。</p>
-
-<p><strong>リファレンス</strong><br />
-[1] Ian Goodfellow, David Warde-Farley, Mehdi Mirza, Aaron Courville, Yoshua Bengio. Maxout Networks. In Proceedings of the ICML, 2013.<br />
-[2] Rupesh K Srivastava, Jonathan Masci, Sohrob Kazerounian, Faustino Gomez, Jurgen Schmidhuber. Compete to Compute. In Proceedings NIPS, 2013.</p>
 ]]></content>
   </entry>
   

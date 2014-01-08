@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>AIへ秒読み</title>
+  <title>ニューラルネットでのオーバーフローについてのメモ - AIへ秒読み</title>
   <meta name="author" content="榊原 研">
 
   
-  <meta name="description" content="人工知能、機械学習、自然言語処理のトレンドを追っかけるページ">
+  <meta name="description" content="前回はニューラルネットの新たな（？）手法、maxout についてふれました。
+これは tanh やシグモイドなどのアクティベーション関数を使うかわりに、
+出力をいくつかづつにまとめてその max を計算し、レイヤーの出力とするというものでした。 この maxout レイヤーを複数重ねる場合、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://kensak.github.io">
+  <link rel="canonical" href="http://kensak.github.io/blog/2014/01/08/linear-perceptron-overflow">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="AIへ秒読み" type="application/atom+xml">
@@ -93,15 +95,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/01/08/linear-perceptron-overflow/">ニューラルネットでのオーバーフローについてのメモ</a></h1>
+      <h1 class="entry-title">ニューラルネットでのオーバーフローについてのメモ</h1>
     
     
       <p class="meta">
@@ -124,7 +123,7 @@
   </header>
 
 
-  <div class="entry-content"><p>前回はニューラルネットの新たな（？）手法、maxout についてふれました。
+<div class="entry-content"><p>前回はニューラルネットの新たな（？）手法、maxout についてふれました。
 これは tanh やシグモイドなどのアクティベーション関数を使うかわりに、
 出力をいくつかづつにまとめてその max を計算し、レイヤーの出力とするというものでした。</p>
 
@@ -133,69 +132,50 @@
 
 <p>これを避けるには、[1]にあるように重み行列のノルムに制限をかけ、制限を越えたら重みとバイアスに同じ係数を掛けてスケールダウンする必要があります。</p>
 
+<!-- more -->
+
+<p>これはOpenCVを使えばこんな風に書けます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="cpp"><span class="line"><span class="kt">double</span> <span class="n">weightNorm</span> <span class="o">=</span> <span class="n">cv</span><span class="o">::</span><span class="n">norm</span><span class="p">(</span><span class="n">weight</span><span class="p">);</span>
+</span><span class="line"><span class="k">if</span> <span class="p">(</span><span class="n">maxWeightNorm</span> <span class="o">&lt;</span> <span class="n">weightNorm</span><span class="p">)</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">  <span class="kt">double</span> <span class="n">coef</span> <span class="o">=</span> <span class="n">maxWeightNorm</span> <span class="o">/</span> <span class="n">weightNorm</span><span class="p">;</span>
+</span><span class="line">  <span class="n">weight</span> <span class="o">*=</span> <span class="n">coef</span><span class="p">;</span>
+</span><span class="line">  <span class="n">bias</span> <span class="o">*=</span> <span class="n">coef</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>また、これは maxout に限りませんが、恒等関数をアクティベーション関数とするレイヤーの出力をそのまま softmax レイヤーに接続する場合、
+入力が大きすぎて指数関数がオーバーフローすることがあります。</p>
+
+<p>softmax のアクティベーション $\mathbf{a}$ は入力 $\mathbf{x}$ より
+$$
+a_i = \frac{exp(x_i)}{\sum_k exp(x_k)}
+$$
+で計算されますから、$\mathbf{x}$ のすべての要素から同じ数をさっぴいても結果は変わりません。
+要素の max を計算し、それをすべての要素から引いてから計算することで、#INF00 を避けることができます。</p>
+
+<p><strong>リファレンス</strong><br />
+[1] Geoffrey E. Hinton, Nitish Srivastava, Alex Krizhevsky, Ilya Sutskever, and Ruslan R.　Salakhutdinov. Improving neural networks by preventing co-adaptation of feature detectors.
+2012. arXiv:1207.0580.</p>
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/01/08/linear-perceptron-overflow/">続きを読む &rarr;</a>
-    </footer>
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/12/29/maxout/">Maxout: アクティベーション関数に Max を使う</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
   
 
+<span class="byline author vcard">Posted by <span class="fn">榊原 研</span></span>
 
-<time datetime="2013-12-29T23:26:44+09:00" pubdate data-updated="true">2013-12-29</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>とても似た内容の二つの論文を読んでみました。
-多層パーセプトロンのアクティベーション関数としてシグモイドや tanh のかわりに max を使うと文字認識などでの認識率が上がる、という話です。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/12/29/maxout/">続きを読む &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/12/29/first-post/">初ポスト</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -207,31 +187,38 @@
   
 
 
-<time datetime="2013-12-29T21:03:36+09:00" pubdate data-updated="true">2013-12-29</time>
-        
-      </p>
+<time datetime="2014-01-08T22:03:03+09:00" pubdate data-updated="true">2014-01-08</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/c-plus-plus/'>C++</a>, <a class='category' href='/blog/categories/opencv/'>OpenCV</a>, <a class='category' href='/blog/categories/niyurarunetuto/'>ニューラルネット</a>, <a class='category' href='/blog/categories/puroguramingu/'>プログラミング</a>
+  
+</span>
+
+
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>二日がかりでようやく Github + Octopress のサイトを立ち上げました。
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://kensak.github.io/blog/2014/01/08/linear-perceptron-overflow/" data-via="KenSakakibar" data-counturl="http://kensak.github.io/blog/2014/01/08/linear-perceptron-overflow/" >Tweet</a>
+  
+  
+  
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/12/29/first-post/">続きを読む &rarr;</a>
-    </footer>
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/12/29/maxout/" title="Previous Post: maxout: アクティベーション関数に max を使う">&laquo; maxout: アクティベーション関数に max を使う</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
 </div>
+
 <aside class="sidebar">
   
     <section>
@@ -264,7 +251,7 @@
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <a href="https://github.com/kensak">@kensak</a> on GitHub
@@ -299,6 +286,7 @@
 
   
 </aside>
+
 
     </div>
   </div>
