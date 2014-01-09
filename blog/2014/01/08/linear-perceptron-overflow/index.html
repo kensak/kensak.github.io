@@ -157,7 +157,7 @@
 
 <p>softmax のアクティベーション $\mathbf{a}$ は入力 $\mathbf{x}$ より
 $$
-a_i = \frac{exp(x_i)}{\sum_k exp(x_k)}
+a_i = \frac{\exp(x_i)}{\sum_k \exp(x_k)}
 $$
 で計算されますから、$\mathbf{x}$ のすべての要素から同じ数をさっぴいても結果は変わりません。
 要素の max を計算し、それをすべての要素から引いてから計算することで、#INF00 を避けることができます。</p>

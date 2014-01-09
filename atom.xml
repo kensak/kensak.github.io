@@ -4,7 +4,7 @@
   <title><![CDATA[AIへ秒読み]]></title>
   <link href="http://kensak.github.io/atom.xml" rel="self"/>
   <link href="http://kensak.github.io/"/>
-  <updated>2014-01-08T22:51:03+09:00</updated>
+  <updated>2014-01-09T15:16:37+09:00</updated>
   <id>http://kensak.github.io/</id>
   <author>
     <name><![CDATA[榊原 研]]></name>
@@ -52,7 +52,7 @@
 
 <p>softmax のアクティベーション $\mathbf{a}$ は入力 $\mathbf{x}$ より
 $$
-a_i = \frac{exp(x_i)}{\sum_k exp(x_k)}
+a_i = \frac{\exp(x_i)}{\sum_k \exp(x_k)}
 $$
 で計算されますから、$\mathbf{x}$ のすべての要素から同じ数をさっぴいても結果は変わりません。
 要素の max を計算し、それをすべての要素から引いてから計算することで、#INF00 を避けることができます。</p>
