@@ -101,54 +101,6 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/01/08/linear-perceptron-overflow/">ニューラルネットでのオーバーフローについてのメモ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-01-08T22:03:03+09:00" pubdate data-updated="true">2014-01-08</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>前回はニューラルネットの新たな（？）手法、maxout についてふれました。
-これは tanh やシグモイドなどのアクティベーション関数を使うかわりに、
-出力をいくつかづつにまとめてその max を計算し、レイヤーの出力とするというものでした。</p>
-
-<p>この maxout レイヤーを複数重ねる場合、そのままでは重みが大きくなることによる浮動小数点の計算エラーが発生することがあります。
-つまり、maxout では入力に重みを掛けるばかりで tanh のように値域を狭めるものがないので、出力が爆発してしまう。</p>
-
-<p>これを避けるには、[1]にあるように重み行列のノルムに制限をかけ、制限を越えたら重みとバイアスに同じ係数を掛けてスケールダウンする必要があります。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/01/08/linear-perceptron-overflow/">続きを読む &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
       <h1 class="entry-title"><a href="/blog/2013/12/29/maxout/">Maxout: アクティベーション関数に Max を使う</a></h1>
     
     
@@ -239,10 +191,6 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2014/01/08/linear-perceptron-overflow/">ニューラルネットでのオーバーフローについてのメモ</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2013/12/29/maxout/">Maxout: アクティベーション関数に Max を使う</a>
       </li>
     
@@ -254,11 +202,11 @@
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/c-plus-plus/'>C++ (1)</a></li><li><a href='/blog/categories/opencv/'>OpenCV (1)</a></li><li><a href='/blog/categories/niyurarunetuto/'>ニューラルネット (2)</a></li><li><a href='/blog/categories/puroguramingu/'>プログラミング (1)</a></li><li><a href='/blog/categories/lun-wen/'>論文 (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/niyurarunetuto/'>ニューラルネット (1)</a></li><li><a href='/blog/categories/lun-wen/'>論文 (1)</a></li></ul>
 </section>
 <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/c-plus-plus' style='font-size: 130.0%'>C++(1)</a> <a href='/blog/categories/opencv' style='font-size: 130.0%'>OpenCV(1)</a> <a href='/blog/categories/niyurarunetuto' style='font-size: 160.0%'>ニューラルネット(2)</a> <a href='/blog/categories/puroguramingu' style='font-size: 130.0%'>プログラミング(1)</a> <a href='/blog/categories/lun-wen' style='font-size: 130.0%'>論文(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/niyurarunetuto' style='font-size: 160.0%'>ニューラルネット(1)</a> <a href='/blog/categories/lun-wen' style='font-size: 160.0%'>論文(1)</a> </span>
 </section>
 
 <section>

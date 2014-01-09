@@ -4,7 +4,7 @@
   <title><![CDATA[AIへ秒読み]]></title>
   <link href="http://kensak.github.io/atom.xml" rel="self"/>
   <link href="http://kensak.github.io/"/>
-  <updated>2014-01-09T15:16:37+09:00</updated>
+  <updated>2014-01-09T20:15:13+09:00</updated>
   <id>http://kensak.github.io/</id>
   <author>
     <name><![CDATA[榊原 研]]></name>
@@ -12,56 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[ニューラルネットでのオーバーフローについてのメモ]]></title>
-    <link href="http://kensak.github.io/blog/2014/01/08/linear-perceptron-overflow/"/>
-    <updated>2014-01-08T22:03:03+09:00</updated>
-    <id>http://kensak.github.io/blog/2014/01/08/linear-perceptron-overflow</id>
-    <content type="html"><![CDATA[<p>前回はニューラルネットの新たな（？）手法、maxout についてふれました。
-これは tanh やシグモイドなどのアクティベーション関数を使うかわりに、
-出力をいくつかづつにまとめてその max を計算し、レイヤーの出力とするというものでした。</p>
-
-<p>この maxout レイヤーを複数重ねる場合、そのままでは重みが大きくなることによる浮動小数点の計算エラーが発生することがあります。
-つまり、maxout では入力に重みを掛けるばかりで tanh のように値域を狭めるものがないので、出力が爆発してしまう。</p>
-
-<p>これを避けるには、[1]にあるように重み行列のノルムに制限をかけ、制限を越えたら重みとバイアスに同じ係数を掛けてスケールダウンする必要があります。</p>
-
-<!-- more -->
-
-<p>これはOpenCVを使えばこんな風に書けます。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="cpp"><span class="line"><span class="kt">double</span> <span class="n">weightNorm</span> <span class="o">=</span> <span class="n">cv</span><span class="o">::</span><span class="n">norm</span><span class="p">(</span><span class="n">weight</span><span class="p">);</span>
-</span><span class="line"><span class="k">if</span> <span class="p">(</span><span class="n">maxWeightNorm</span> <span class="o">&lt;</span> <span class="n">weightNorm</span><span class="p">)</span>
-</span><span class="line"><span class="p">{</span>
-</span><span class="line">  <span class="kt">double</span> <span class="n">coef</span> <span class="o">=</span> <span class="n">maxWeightNorm</span> <span class="o">/</span> <span class="n">weightNorm</span><span class="p">;</span>
-</span><span class="line">  <span class="n">weight</span> <span class="o">*=</span> <span class="n">coef</span><span class="p">;</span>
-</span><span class="line">  <span class="n">bias</span> <span class="o">*=</span> <span class="n">coef</span><span class="p">;</span>
-</span><span class="line"><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>また、これは maxout に限りませんが、恒等関数をアクティベーション関数とするレイヤーの出力をそのまま softmax レイヤーに接続する場合、
-入力が大きすぎて指数関数がオーバーフローすることがあります。</p>
-
-<p>softmax のアクティベーション $\mathbf{a}$ は入力 $\mathbf{x}$ より
-$$
-a_i = \frac{\exp(x_i)}{\sum_k \exp(x_k)}
-$$
-で計算されますから、$\mathbf{x}$ のすべての要素から同じ数をさっぴいても結果は変わりません。
-要素の max を計算し、それをすべての要素から引いてから計算することで、#INF00 を避けることができます。</p>
-
-<p><strong>リファレンス</strong><br />
-[1] Geoffrey E. Hinton, Nitish Srivastava, Alex Krizhevsky, Ilya Sutskever, and Ruslan R.　Salakhutdinov. Improving neural networks by preventing co-adaptation of feature detectors.
-2012. arXiv:1207.0580.</p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Maxout: アクティベーション関数に Max を使う]]></title>
