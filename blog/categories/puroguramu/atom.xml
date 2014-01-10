@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: プログラム | AIへ秒読み]]></title>
+  <link href="http://kensak.github.io/blog/categories/puroguramu/atom.xml" rel="self"/>
+  <link href="http://kensak.github.io/"/>
+  <updated>2014-01-10T22:39:05+09:00</updated>
+  <id>http://kensak.github.io/</id>
+  <author>
+    <name><![CDATA[榊原 研]]></name>
+    <email><![CDATA[ken.sakakibar@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[CharRecog を GitHub にアップしました]]></title>
+    <link href="http://kensak.github.io/blog/2014/01/10/uploaded-charrecog/"/>
+    <updated>2014-01-10T22:20:53+09:00</updated>
+    <id>http://kensak.github.io/blog/2014/01/10/uploaded-charrecog</id>
+    <content type="html"><![CDATA[<p>ニューラルネットによる文字認識プログラム CharRecog を
+<a href="https://github.com/kensak/CharRecog">GitHub にアップしました</a>。</p>
+
+<p>特徴としては、
++ C++ で作成。OpenCV の ANN_MLP クラスを参考に、コアの部分はゼロから書きなおしました。
++ 並列処理 : インテル TBB、OpenMP, C++ AMP などを使い、マルチコア CPU や GPU による並列処理をおこなっています。
++ 行列計算による高速化 : すべてのサンプル画像を処理する際、できるだけループを回さず一回の行列計算により処理をおこないます。
++ さまざまな手法への対応 : autoencoding, convolutional layer, max pooling, maxout, dropout の各手法や
+  入力画像のランダムな affine 変換などに対応しています。
++ ビルド済み実行ファイルでは float で計算をおこないますが、ソースを一ヶ所変更してリビルドすれば double にも対応します。
++ 学習された重みを画像として出力できます。</p>
+
+<p>すぐに使えるよう 64 ビット版のバイナリもアップしています。
+MNIST 画像セットを使って autoencoding や dropout などの実験が簡単におこなえます。</p>
+
+<p>今後も気になる手法があればインプリメントしていこうと考えています。
+また、画像認識や言語処理のための高速なNNエンジンとしても使えるようにしていきたいです。</p>
+
+]]></content>
+  </entry>
+  
+</feed>

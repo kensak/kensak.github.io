@@ -5,13 +5,14 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Blog Archive - AIへ秒読み</title>
+  <title>CharRecog を GitHub にアップしました - AIへ秒読み</title>
   <meta name="author" content="榊原 研">
 
   
-  <meta name="description" content="Blog Archive 2014 CharRecog を GitHub にアップしました
-Jan 10 2014 posted in C++, OpenCV, ニューラルネット, プログラム, 文字認識 2013 Maxout: アクティベーション関数に Max を使う
-Dec 29 2013 &hellip;">
+  <meta name="description" content="ニューラルネットによる文字認識プログラム CharRecog を
+GitHub にアップしました。 特徴としては、
++ C++ で作成。OpenCV の ANN_MLP クラスを参考に、コアの部分はゼロから書きなおしました。
++ 並列処理 : インテル TBB、OpenMP, C++ AMP &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +21,7 @@ Dec 29 2013 &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://kensak.github.io/blog/archives">
+  <link rel="canonical" href="http://kensak.github.io/blog/2014/01/10/uploaded-charrecog">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="AIへ秒読み" type="application/atom+xml">
@@ -95,63 +96,102 @@ Dec 29 2013 &hellip;">
 </nav>
   <div id="main">
     <div id="content">
-      <div class="page-content">
-<article role="article">
+      <div>
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Blog Archive</h1>
+    
+      <h1 class="entry-title">CharRecog を GitHub にアップしました</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-10T22:20:53+09:00" pubdate data-updated="true">2014-01-10</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives">
 
 
+<div class="entry-content"><p>ニューラルネットによる文字認識プログラム CharRecog を
+<a href="https://github.com/kensak/CharRecog">GitHub にアップしました</a>。</p>
 
-  
-  <h2>2014</h2>
+<p>特徴としては、
++ C++ で作成。OpenCV の ANN_MLP クラスを参考に、コアの部分はゼロから書きなおしました。
++ 並列処理 : インテル TBB、OpenMP, C++ AMP などを使い、マルチコア CPU や GPU による並列処理をおこなっています。
++ 行列計算による高速化 : すべてのサンプル画像を処理する際、できるだけループを回さず一回の行列計算により処理をおこないます。
++ さまざまな手法への対応 : autoencoding, convolutional layer, max pooling, maxout, dropout の各手法や
+  入力画像のランダムな affine 変換などに対応しています。
++ ビルド済み実行ファイルでは float で計算をおこないますが、ソースを一ヶ所変更してリビルドすれば double にも対応します。
++ 学習された重みを画像として出力できます。</p>
 
-<article>
-  
-<h1><a href="/blog/2014/01/10/uploaded-charrecog/">CharRecog を GitHub にアップしました</a></h1>
-<time datetime="2014-01-10T22:20:53+09:00" pubdate><span class='month'>Jan</span> <span class='day'>10</span> <span class='year'>2014</span></time>
+<p>すぐに使えるよう 64 ビット版のバイナリもアップしています。
+MNIST 画像セットを使って autoencoding や dropout などの実験が簡単におこなえます。</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/c-plus-plus/'>C++</a>, <a class='category' href='/blog/categories/opencv/'>OpenCV</a>, <a class='category' href='/blog/categories/niyurarunetuto/'>ニューラルネット</a>, <a class='category' href='/blog/categories/puroguramu/'>プログラム</a>, <a class='category' href='/blog/categories/wen-zi-ren-shi/'>文字認識</a></span>
-</footer>
-
-
-</article>
-
-
-
-  
-  <h2>2013</h2>
-
-<article>
-  
-<h1><a href="/blog/2013/12/29/maxout/">Maxout: アクティベーション関数に Max を使う</a></h1>
-<time datetime="2013-12-29T23:26:44+09:00" pubdate><span class='month'>Dec</span> <span class='day'>29</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/niyurarunetuto/'>ニューラルネット</a>, <a class='category' href='/blog/categories/lun-wen/'>論文</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2013/12/29/first-post/">初ポスト</a></h1>
-<time datetime="2013-12-29T21:03:36+09:00" pubdate><span class='month'>Dec</span> <span class='day'>29</span> <span class='year'>2013</span></time>
-
-
-</article>
+<p>今後も気になる手法があればインプリメントしていこうと考えています。
+また、画像認識や言語処理のための高速なNNエンジンとしても使えるようにしていきたいです。</p>
 
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">榊原 研</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-10T22:20:53+09:00" pubdate data-updated="true">2014-01-10</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/c-plus-plus/'>C++</a>, <a class='category' href='/blog/categories/opencv/'>OpenCV</a>, <a class='category' href='/blog/categories/niyurarunetuto/'>ニューラルネット</a>, <a class='category' href='/blog/categories/puroguramu/'>プログラム</a>, <a class='category' href='/blog/categories/wen-zi-ren-shi/'>文字認識</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://kensak.github.io/blog/2014/01/10/uploaded-charrecog/" data-via="KenSakakibar" data-counturl="http://kensak.github.io/blog/2014/01/10/uploaded-charrecog/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/12/29/maxout/" title="Previous Post: maxout: アクティベーション関数に max を使う">&laquo; maxout: アクティベーション関数に max を使う</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
 </div>
