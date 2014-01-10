@@ -1,27 +1,27 @@
 ---
 layout: post
-title: "CharRecog �� GitHub �ɃA�b�v���܂���"
+title: "CharRecog を GitHub にアップしました"
 date: 2014-01-10 22:20:53 +0900
 comments: true
-categories: [�j���[�����l�b�g,�����F��,�v���O����,C++,OpenCV]
+categories: [ニューラルネット,文字認識,プログラム,C++,OpenCV]
 ---
-�j���[�����l�b�g�ɂ�镶���F���v���O���� CharRecog ��
-[GitHub �ɃA�b�v���܂���](https://github.com/kensak/CharRecog)�B
+ニューラルネットによる文字認識プログラム CharRecog を
+[GitHub にアップしました](https://github.com/kensak/CharRecog)。
 
-�����Ƃ��ẮA
-+ C++ �ō쐬�BOpenCV �� ANN_MLP �N���X���Q�l�ɁA�R�A�̕����̓[�����珑���Ȃ����܂����B
-+ ���񏈗� : �C���e�� TBB�AOpenMP, C++ AMP �Ȃǂ��g���A�}���`�R�A CPU �� GPU �ɂ����񏈗��������Ȃ��Ă��܂��B
-+ �s��v�Z�ɂ�鍂���� : ���ׂẴT���v���摜����������ہA�ł��邾�����[�v���񂳂����̍s��v�Z�ɂ�菈���������Ȃ��܂��B
-+ ���܂��܂Ȏ�@�ւ̑Ή� : autoencoding, convolutional layer, max pooling, maxout, dropout �̊e��@��
-  ���͉摜�̃����_���� affine �ϊ��ȂǂɑΉ����Ă��܂��B
-+ �r���h�ςݎ��s�t�@�C���ł� float �Ōv�Z�������Ȃ��܂����A�\�[�X���ꃖ���ύX���ă��r���h����� double �ɂ��Ή����܂��B
-+ �w�K���ꂽ�d�݂��摜�Ƃ��ďo�͂ł��܂��B
+特徴としては、
++ C++ で作成。OpenCV の ANN_MLP クラスを参考に、コアの部分はゼロから書きなおしました。
++ 並列処理 : インテル TBB、OpenMP, C++ AMP などを使い、マルチコア CPU や GPU による並列処理をおこなっています。
++ 行列計算による高速化 : すべてのサンプル画像を処理する際、できるだけループを回さず一回の行列計算により処理をおこないます。
++ さまざまな手法への対応 : autoencoding, convolutional layer, max pooling, maxout, dropout の各手法や
+  入力画像のランダムな affine 変換などに対応しています。
++ ビルド済み実行ファイルでは float で計算をおこないますが、ソースを一ヶ所変更してリビルドすれば double にも対応します。
++ 学習された重みを画像として出力できます。
 
-�����Ɏg����悤 64 �r�b�g�ł̃o�C�i�����A�b�v���Ă��܂��B
-MNIST �摜�Z�b�g���g���� autoencoding �� dropout �Ȃǂ̎������ȒP�ɂ����Ȃ��܂��B
+すぐに使えるよう 64 ビット版のバイナリもアップしています。
+MNIST 画像セットを使って autoencoding や dropout などの実験が簡単におこなえます。
 
-������C�ɂȂ��@������΃C���v�������g���Ă������ƍl���Ă��܂��B
-�܂��A�摜�F���⌾�ꏈ���̂��߂̍�����NN�G���W���Ƃ��Ă��g����悤�ɂ��Ă��������ł��B
+今後も気になる手法があればインプリメントしていこうと考えています。
+また、画像認識や言語処理のための高速なNNエンジンとしても使えるようにしていきたいです。
 
 
 
