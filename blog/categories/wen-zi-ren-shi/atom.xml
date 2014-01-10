@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 文字認識 | AIへ秒読み]]></title>
   <link href="http://kensak.github.io/blog/categories/wen-zi-ren-shi/atom.xml" rel="self"/>
   <link href="http://kensak.github.io/"/>
-  <updated>2014-01-10T22:39:05+09:00</updated>
+  <updated>2014-01-10T22:47:35+09:00</updated>
   <id>http://kensak.github.io/</id>
   <author>
     <name><![CDATA[榊原 研]]></name>
@@ -21,20 +21,22 @@
     <content type="html"><![CDATA[<p>ニューラルネットによる文字認識プログラム CharRecog を
 <a href="https://github.com/kensak/CharRecog">GitHub にアップしました</a>。</p>
 
-<p>特徴としては、
-+ C++ で作成。OpenCV の ANN_MLP クラスを参考に、コアの部分はゼロから書きなおしました。
-+ 並列処理 : インテル TBB、OpenMP, C++ AMP などを使い、マルチコア CPU や GPU による並列処理をおこなっています。
-+ 行列計算による高速化 : すべてのサンプル画像を処理する際、できるだけループを回さず一回の行列計算により処理をおこないます。
-+ さまざまな手法への対応 : autoencoding, convolutional layer, max pooling, maxout, dropout の各手法や
-  入力画像のランダムな affine 変換などに対応しています。
-+ ビルド済み実行ファイルでは float で計算をおこないますが、ソースを一ヶ所変更してリビルドすれば double にも対応します。
-+ 学習された重みを画像として出力できます。</p>
+<h3 id="section">特徴</h3>
+<ul>
+  <li>C++ で作成。OpenCV の ANN_MLP クラスを参考に、コアの部分はゼロから書きなおしました。</li>
+  <li>並列処理 : インテル TBB、OpenMP, C++ AMP などを使い、マルチコア CPU や GPU による並列処理をおこなっています。</li>
+  <li>行列計算による高速化 : すべてのサンプル画像を処理する際、できるだけループを回さず一回の行列計算により処理をおこないます。</li>
+  <li>さまざまな手法への対応 : autoencoding, convolutional layer, max pooling, maxout, dropout の各手法や
+入力画像のランダムな affine 変換などに対応しています。</li>
+  <li>ビルド済み実行ファイルでは float で計算をおこないますが、ソースを一ヶ所変更してリビルドすれば double にも対応します。</li>
+  <li>学習された重みを画像として出力できます。</li>
+</ul>
 
 <p>すぐに使えるよう 64 ビット版のバイナリもアップしています。
 MNIST 画像セットを使って autoencoding や dropout などの実験が簡単におこなえます。</p>
 
-<p>今後も気になる手法があればインプリメントしていこうと考えています。
-また、画像認識や言語処理のための高速なNNエンジンとしても使えるようにしていきたいです。</p>
+<p>今後も気になる手法があればインプリメントしていく予定です。
+また、画像認識や言語処理のための高速なNNエンジンとしても使えるようにしていきたい。</p>
 
 ]]></content>
   </entry>
