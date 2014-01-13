@@ -10,9 +10,8 @@
 
   
   <meta name="description" content="ニューラルネットをプログラムするときに、ランダムな置換
-（≒ 0 から n-1 までの数がランダムな順で並んだもの）が
-必要になることがあります。例えば、 SGD with minibatch において、サンプルの中からランダムな順序で 100 ずつ、
-順番に取り出したい。 Dropout &hellip;">
+（ここでは $ 0 $ から $ n-1 $ までの数がランダムな順で並んだものと考えます）が
+必要になることがあります。例えば、 SGD with minibatch において、サンプルの配列の中からランダムな順序で 100 ずつ、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -125,18 +124,25 @@
 
 
 <div class="entry-content"><p>ニューラルネットをプログラムするときに、ランダムな置換
-（≒ 0 から n-1 までの数がランダムな順で並んだもの）が
+（ここでは $ 0 $ から $ n-1 $ までの数がランダムな順で並んだものと考えます）が
 必要になることがあります。例えば、</p>
 
 <ul>
-  <li>SGD with minibatch において、サンプルの中からランダムな順序で 100 ずつ、
-順番に取り出したい。</li>
+  <li>SGD with minibatch において、サンプルの配列の中からランダムな順序で 100 ずつ、
+順番に取り出したい。ランダムな置換を使って配列のインデックスをかき混ぜればよい。</li>
   <li>Dropout において、n 個の入力のうちランダムに選んだ半分を 0 にセットしたい。
-（それぞれの入力を確率 0.5 で 0 にするのではちょうど半分になるとは限らない。）</li>
+それぞれの入力を確率 0.5 で 0 にするのではちょうど半分になるとは限らない。
+ランダムな置換を使えば、$ n / 2 $ 未満の要素を選ぶことによりちょうど半分
+をランダムに選ぶことができる。半分ではなく他の比率でも大丈夫。</li>
 </ul>
 
-<p>これには <a href="http://en.wikipedia.org/wiki/Random_permutation">Knuth shuffles</a>
-という便利なアルゴリズムがあります。</p>
+<p>ランダムな置換を得るには <a href="http://en.wikipedia.org/wiki/Random_permutation">Knuth shuffles</a>
+という便利なアルゴリズムがあります。これは $ 0, 1, \ldots, n - 1 $ という
+シーケンスに対し、$i$ 番目と、$ 0, \ldots, i $ からランダムに選んだ $j$
+による $j$ 番目とを入れ替える、という操作を $i = 0, 1, \ldots, n-1$ について
+繰り返すというものです。</p>
+
+<p>変数の初期化も同時にやってしまうのが以下のコードです。</p>
 
 <!-- more -->
 
@@ -152,12 +158,12 @@
 <span class="line-number">10</span>
 <span class="line-number">11</span>
 <span class="line-number">12</span>
-</pre></td><td class="code"><pre><code class="cpp"><span class="line"><span class="c1">// get a random permutation of 0, 1, .., len-1]] where len = vec.size().</span>
+</pre></td><td class="code"><pre><code class="cpp"><span class="line"><span class="c1">// get a random permutation of [0, 1, .., n-1] where n = vec.size().</span>
 </span><span class="line"><span class="kt">void</span> <span class="n">GetRandomPermutation</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">vec</span><span class="p">)</span>
 </span><span class="line"><span class="p">{</span>
 </span><span class="line">  <span class="c1">// Knuth shuffles algorithm</span>
-</span><span class="line">  <span class="k">const</span> <span class="n">size_t</span> <span class="n">len</span> <span class="o">=</span> <span class="n">vec</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-</span><span class="line">  <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</span><span class="line">  <span class="k">const</span> <span class="n">size_t</span> <span class="n">n</span> <span class="o">=</span> <span class="n">vec</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+</span><span class="line">  <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
 </span><span class="line">  <span class="p">{</span>
 </span><span class="line">    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
 </span><span class="line">    <span class="n">vec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">vec</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
@@ -166,42 +172,38 @@
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>ここで <code>uniform(0, i)</code> は $0, 1, \ldots,i$ の中から同確率で数を一つ選んで
-返す関数だとします。</p>
+<p>ここで <code>uniform(0, i)</code> は $0, 1, \ldots,i$ の中から同確率で一つ選んで
+返す関数です。</p>
 
-<p>このアルゴリズムは要するに $i$ 回目のループで、まず <code>vec[i]</code> に $i$ を入れ、
-さらに $[0, i]$ からランダムに $j$ を選んで <code>vec[i]</code> と <code>vec[j]</code> の値を入れ替えているだけです。</p>
-
-<p>（9 行目で $i = j$ の場合、まだ初期化されていない値を自分に代入することになりますが、
-そのときは次の 10 行目で $i$ が上書きされるので問題ありません。）</p>
+<p>9 行目で $i = j$ の場合、まだ初期化されていない値を自分に代入することになりますが、
+そのときは次の 10 行目で $i$ が上書きされるので問題ありません。</p>
 
 <p>このように簡単なアルゴリズムですが、
 これで最終的に得られる置換の分布は一様であることが、次のように証明できます。</p>
 
 <p>数学的帰納法を使います。  </p>
 
-<blockquote>
-  <p>$k$ 番目のループのあと、vec[p] $(p \in [0,k])$ の値が $q \in [0, k]$ である確率は $p, q$
-に関わらずすべて $1 / (k + 1)$ である</p>
-</blockquote>
+<p>「$k$ 番目のループ（$ k = 0, 1, \ldots, n-1 $）のあと、$ \mathrm{vec}[p]~~(p \in [0,k]) $ の値が $q \in [0, k]$ である確率は $p, q$
+に関わらずすべて $1 / (k + 1)$ である」</p>
 
-<p>という命題を $P(k)$ とします。<br />
-$P(0)$ は自明です。<br />
-$P(k)$ を真だと仮定して $P(k+1)$ を証明すればいいわけですが、$k+1$ 番目のループのあと、</p>
+<p>という命題を $ \mathrm{Prop}(k) $ とします。証明したいのは $ \mathrm{Prop}(n-1) $ です。<br />
+$ \mathrm{Prop}(0) $ は自明です。<br />
+$ \mathrm{Prop}(k) $ を真だと仮定して $ \mathrm{Prop}(k+1) $ を証明すればいいわけですが、
+$k+1$ 番目のループのあとに</p>
 
 <ul>
-  <li><code>vec[p]</code> $(p \in [0,k])$ が $q \in [0, k]$ である確率は、
+  <li>$ \mathrm{vec}[p]~~(p \in [0,k]) $ が $q \in [0, k]$ である確率は、
 「前回のループ後にその値であった確率」×「今回入れ替えられなかった確率」、
 つまり
 $$
 (1 / (k + 1)) \cdot ((k + 1) / (k + 2)) = 1 / (k + 2)
 $$</li>
-  <li><code>vec[p]</code> $(p \in [0,k])$ が $k + 1$ である確率は、今回入れ替えられた確率、
+  <li>$ \mathrm{vec}[p]~~(p \in [0,k]) $ が $k + 1$ である確率は、今回入れ替えられた確率、
 つまり $1 / (k + 2)$</li>
-  <li><code>vec[k+1]</code> が $q \in [0, k+1]$　である確率はやはり $1 / (k + 2)$</li>
+  <li>$ \mathrm{vec}[k+1] $ が $q \in [0, k+1]$　である確率はやはり $1 / (k + 2)$</li>
 </ul>
 
-<p>というわけで  $P(k+1)$ が成り立ちます。</p>
+<p>というわけで  $ \mathrm{Prop}(k+1) $ が成り立ちます。</p>
 
 </div>
 
