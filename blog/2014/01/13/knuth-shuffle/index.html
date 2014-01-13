@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>AIへ秒読み</title>
+  <title>ランダムな置換とクヌース・シャッフル - AIへ秒読み</title>
   <meta name="author" content="榊原 研">
 
   
@@ -21,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://kensak.github.io/blog">
+  <link rel="canonical" href="http://kensak.github.io/blog/2014/01/13/knuth-shuffle">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="AIへ秒読み" type="application/atom+xml">
@@ -96,15 +96,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/01/13/knuth-shuffle/">ランダムな置換とクヌース・シャッフル</a></h1>
+      <h1 class="entry-title">ランダムな置換とクヌース・シャッフル</h1>
     
     
       <p class="meta">
@@ -127,7 +124,7 @@
   </header>
 
 
-  <div class="entry-content"><p>ニューラルネットをプログラムするときに、ランダムな置換
+<div class="entry-content"><p>ニューラルネットをプログラムするときに、ランダムな置換
 （≒ 0 から n-1 までの数がランダムな順で並んだもの）が
 必要になることがあります。例えば、</p>
 
@@ -141,124 +138,82 @@
 <p>これには <a href="http://en.wikipedia.org/wiki/Random_permutation">Knuth shuffles</a>
 という便利なアルゴリズムがあります。</p>
 
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/01/13/knuth-shuffle/">続きを読む &rarr;</a>
-    </footer>
-  
+<!-- more -->
 
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="cpp"><span class="line"><span class="c1">// get a random permutation of 0, 1, .., len-1]] where len = vec.size().</span>
+</span><span class="line"><span class="kt">void</span> <span class="n">GetRandomPermutation</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">vec</span><span class="p">)</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">  <span class="c1">// Knuth shuffles algorithm</span>
+</span><span class="line">  <span class="k">const</span> <span class="n">size_t</span> <span class="n">len</span> <span class="o">=</span> <span class="n">vec</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+</span><span class="line">  <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</span><span class="line">  <span class="p">{</span>
+</span><span class="line">    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+</span><span class="line">    <span class="n">vec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">vec</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+</span><span class="line">    <span class="n">vec</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/01/10/uploaded-charrecog/">CharRecog を GitHub にアップしました</a></h1>
-    
-    
-      <p class="meta">
-        
+<p>ここで <code>uniform(0, i)</code> は $0, 1, \ldots,i$ の中から同確率で数を一つ選んで
+返す関数だとします。</p>
 
+<p>このアルゴリズムは要するに $i$ 回目のループで、まず <code>vec[i]</code> に $i$ を入れ、
+さらに $[0, i]$ からランダムに $j$ を選んで <code>vec[i]</code> と <code>vec[j]</code> の値を入れ替えているだけです。</p>
 
+<p>（9 行目で $i = j$ の場合、まだ初期化されていない値を自分に代入することになりますが、
+そのときは次の 10 行目で $i$ が上書きされるので問題ありません。）</p>
 
+<p>このように簡単なアルゴリズムですが、
+これで最終的に得られる置換の分布は一様であることが、次のように証明できます。</p>
 
+<p>数学的帰納法を使います。  </p>
 
+<blockquote>
+  <p>$k$ 番目のループのあと、vec[p] $(p \in [0,k])$ の値が $q \in [0, k]$ である確率は $p, q$
+に関わらずすべて $1 / (k + 1)$ である</p>
+</blockquote>
 
+<p>という命題を $P(k)$ とします。<br />
+$P(0)$ は自明です。<br />
+$P(k)$ を真だと仮定して $P(k+1)$ を証明すればいいわけですが、$k+1$ 番目のループのあと、</p>
 
-
-  
-
-
-<time datetime="2014-01-10T22:20:53+09:00" pubdate data-updated="true">2014-01-10</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>ニューラルネットによる文字認識プログラム CharRecog を
-<a href="https://github.com/kensak/CharRecog">GitHub にアップしました</a>。</p>
-
-<h3 id="section">特徴</h3>
 <ul>
-  <li>C++ で作成。OpenCV の ANN_MLP クラスを参考に、コアの部分はゼロから書きなおしました。</li>
-  <li>並列処理 : インテル TBB、OpenMP, C++ AMP などを使い、マルチコア CPU や GPU による並列処理をおこなっています。</li>
-  <li>行列計算による高速化 : すべてのサンプル画像を処理する際、できるだけループを回さず一回の行列計算により処理をおこないます。</li>
-  <li>さまざまな手法への対応 : autoencoding, convolutional layer, max pooling, maxout, dropout の各手法や
-入力画像のランダムな affine 変換などに対応しています。</li>
-  <li>ビルド済み実行ファイルでは float で計算をおこないますが、ソースを一ヶ所変更してリビルドすれば double にも対応します。</li>
-  <li>学習された重みを画像として出力できます。</li>
+  <li><code>vec[p]</code> $(p \in [0,k])$ が $q \in [0, k]$ である確率は、
+「前回のループ後にその値であった確率」×「今回入れ替えられなかった確率」、
+つまり
+$$
+(1 / (k + 1)) \cdot ((k + 1) / (k + 2)) = 1 / (k + 2)
+$$</li>
+  <li><code>vec[p]</code> $(p \in [0,k])$ が $k + 1$ である確率は、今回入れ替えられた確率、
+つまり $1 / (k + 2)$</li>
+  <li><code>vec[k+1]</code> が $q \in [0, k+1]$　である確率はやはり $1 / (k + 2)$</li>
 </ul>
 
-<p>すぐに使えるよう 64 ビット版のバイナリもアップしています。
-MNIST 画像セットを使って autoencoding や dropout などの実験が簡単におこなえます。</p>
-
-<p>今後も気になる手法があればインプリメントしていく予定です。
-また、画像認識や言語処理のための高速なNNエンジンとしても使えるようにしていきたい。</p>
+<p>というわけで  $P(k+1)$ が成り立ちます。</p>
 
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/12/29/maxout/">Maxout: アクティベーション関数に Max を使う</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
   
 
+<span class="byline author vcard">Posted by <span class="fn">榊原 研</span></span>
 
-<time datetime="2013-12-29T23:26:44+09:00" pubdate data-updated="true">2013-12-29</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>とても似た内容の二つの論文を読んでみました。
-多層パーセプトロンのアクティベーション関数としてシグモイドや tanh のかわりに max を使うと文字認識などでの認識率が上がる、という話です。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/12/29/maxout/">続きを読む &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/12/29/first-post/">初ポスト</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -270,31 +225,38 @@ MNIST 画像セットを使って autoencoding や dropout などの実験が簡
   
 
 
-<time datetime="2013-12-29T21:03:36+09:00" pubdate data-updated="true">2013-12-29</time>
-        
-      </p>
+<time datetime="2014-01-13T19:52:19+09:00" pubdate data-updated="true">2014-01-13</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/c-plus-plus/'>C++</a>, <a class='category' href='/blog/categories/arugorizumu/'>アルゴリズム</a>
+  
+</span>
+
+
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>二日がかりでようやく Github + Octopress のサイトを立ち上げました。
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://kensak.github.io/blog/2014/01/13/knuth-shuffle/" data-via="KenSakakibar" data-counturl="http://kensak.github.io/blog/2014/01/13/knuth-shuffle/" >Tweet</a>
+  
+  
+  
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/12/29/first-post/">続きを読む &rarr;</a>
-    </footer>
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/01/10/uploaded-charrecog/" title="Previous Post: CharRecog を GitHub にアップしました">&laquo; CharRecog を GitHub にアップしました</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
 </div>
+
 <aside class="sidebar">
   
     <section>
@@ -331,7 +293,7 @@ MNIST 画像セットを使って autoencoding や dropout などの実験が簡
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <a href="https://github.com/kensak">@kensak</a> on GitHub
@@ -366,6 +328,7 @@ MNIST 画像セットを使って autoencoding や dropout などの実験が簡
 
   
 </aside>
+
 
     </div>
   </div>
