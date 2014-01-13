@@ -4,7 +4,7 @@
   <title><![CDATA[Category: アルゴリズム | AIへ秒読み]]></title>
   <link href="http://kensak.github.io/blog/categories/arugorizumu/atom.xml" rel="self"/>
   <link href="http://kensak.github.io/"/>
-  <updated>2014-01-14T07:33:40+09:00</updated>
+  <updated>2014-01-14T07:41:17+09:00</updated>
   <id>http://kensak.github.io/</id>
   <author>
     <name><![CDATA[榊原 研]]></name>
@@ -107,6 +107,9 @@ $$</li>
 </ul>
 
 <p>というわけで  $ \mathrm{Prop}(k+1) $ が成り立ちます。</p>
+
+<p>やっていることは実に単純ですが、ちょっと自分で思いつくのは難しそうな、
+アルゴリズムらしいアルゴリズムですね。</p>
 
 ]]></content>
   </entry>
