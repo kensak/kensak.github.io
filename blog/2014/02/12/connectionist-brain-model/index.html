@@ -1,24 +1,131 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: ニューラルネット | AIへ秒読み]]></title>
-  <link href="http://kensak.github.io/blog/categories/niyurarunetuto/atom.xml" rel="self"/>
-  <link href="http://kensak.github.io/"/>
-  <updated>2014-02-12T14:32:15+09:00</updated>
-  <id>http://kensak.github.io/</id>
-  <author>
-    <name><![CDATA[榊原 研]]></name>
-    <email><![CDATA[ken.sakakibar@gmail.com]]></email>
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>脳のコネクショニスト・モデル - AIへ秒読み</title>
+  <meta name="author" content="榊原 研">
 
   
-  <entry>
-    <title type="html"><![CDATA[脳のコネクショニスト・モデル]]></title>
-    <link href="http://kensak.github.io/blog/2014/02/12/connectionist-brain-model/"/>
-    <updated>2014-02-12T14:30:00+09:00</updated>
-    <id>http://kensak.github.io/blog/2014/02/12/connectionist-brain-model</id>
-    <content type="html"><![CDATA[<p><a href="https://staff.aist.go.jp/y-ichisugi/j-index.html">産業技術総合研究所の一杉裕志氏のサイト</a>で
+  <meta name="description" content="産業技術総合研究所の一杉裕志氏のサイトで
+氏は大脳皮質の計算論的モデル BESOM を提案しています。
+それは４つの機械学習技術（自己組織化マップ、ベイジアンネット、独立成分分析、強化学習）を
+組み合わせたもので、
+すでにプログラムがありソースコードも公開されています。 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://kensak.github.io/blog/2014/02/12/connectionist-brain-model">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="AIへ秒読み" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">AIへ秒読み</a></h1>
+  
+    <h2>人工知能、機械学習、自然言語処理のトレンドを追っかけるページ</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:kensak.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/blog">Blog</a></li>
+  <li><a href="https://github.com/kensak">Projects</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">脳のコネクショニスト・モデル</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-12T14:30:00+09:00" pubdate data-updated="true">2014-02-12</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><a href="https://staff.aist.go.jp/y-ichisugi/j-index.html">産業技術総合研究所の一杉裕志氏のサイト</a>で
 氏は大脳皮質の計算論的モデル BESOM を提案しています。
 それは４つの機械学習技術（自己組織化マップ、ベイジアンネット、独立成分分析、強化学習）を
 組み合わせたもので、
@@ -193,81 +300,169 @@ $(y’, r) = \mathrm{T}(y)$ で得られる報酬 $r$ を大きくするよう�
 この EM 的な更新と recurrent 性により、遠い因果関係をたどったり、はるか未来に受け取るはずの報酬を最大化するなど、
 各モジュールにおいて複雑な関数を学習できる可能性があります。</p>
 
-]]></content>
-  </entry>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
   
-  <entry>
-    <title type="html"><![CDATA[CharRecog を GitHub にアップしました]]></title>
-    <link href="http://kensak.github.io/blog/2014/01/10/uploaded-charrecog/"/>
-    <updated>2014-01-10T22:20:53+09:00</updated>
-    <id>http://kensak.github.io/blog/2014/01/10/uploaded-charrecog</id>
-    <content type="html"><![CDATA[<p>ニューラルネットによる文字認識プログラム CharRecog を
-<a href="https://github.com/kensak/CharRecog">GitHub にアップしました</a>。</p>
 
-<h3 id="section">特徴</h3>
-<ul>
-  <li>C++ で作成。OpenCV の ANN_MLP クラスを参考に、コアの部分はゼロから書きなおしました。</li>
-  <li>並列処理 : インテル TBB、OpenMP, C++ AMP などを使い、マルチコア CPU や GPU による並列処理をおこなっています。</li>
-  <li>行列計算による高速化 : すべてのサンプル画像を処理する際、できるだけループを回さず一回の行列計算により処理をおこないます。</li>
-  <li>さまざまな手法への対応 : autoencoding, convolutional layer, max pooling, maxout, dropout の各手法や
-入力画像のランダムな affine 変換などに対応しています。</li>
-  <li>ビルド済み実行ファイルでは float で計算をおこないますが、ソースを一ヶ所変更してリビルドすれば double にも対応します。</li>
-  <li>学習された重みを画像として出力できます。</li>
-</ul>
+<span class="byline author vcard">Posted by <span class="fn">榊原 研</span></span>
 
-<p>すぐに使えるよう 64 ビット版のバイナリもアップしています。
-MNIST 画像セットを使って autoencoding や dropout などの実験が簡単におこなえます。</p>
+      
 
-<p>今後も気になる手法があればインプリメントしていく予定です。
-また、画像認識や言語処理のための高速なNNエンジンとしても使えるようにしていきたい。</p>
 
-]]></content>
-  </entry>
+
+
+
+
+
+
   
-  <entry>
-    <title type="html"><![CDATA[Maxout: アクティベーション関数に Max を使う]]></title>
-    <link href="http://kensak.github.io/blog/2013/12/29/maxout/"/>
-    <updated>2013-12-29T23:26:44+09:00</updated>
-    <id>http://kensak.github.io/blog/2013/12/29/maxout</id>
-    <content type="html"><![CDATA[<p>とても似た内容の二つの論文を読んでみました。
-多層パーセプトロンのアクティベーション関数としてシグモイドや tanh のかわりに max を使うと文字認識などでの認識率が上がる、という話です。</p>
 
-<!-- more -->
 
-<p>[1] の maxout レイヤーでは、レイヤーの入力に重みを掛けてバイアスと一緒に足し合わせたあと、
-従来のように tanh やシグモイドなどの関数を適用するのではなく、
-出力をいくつかずつまとめてそれらの中の最大値を最終的な出力とする。</p>
+<time datetime="2014-02-12T14:30:00+09:00" pubdate data-updated="true">2014-02-12</time>
+      
 
-<p>これは、アクティベーション関数として恒等関数を使うパーセンプトロンまたは畳み込みレイヤーと、
-入力をいくつかずつ組にしてそれぞれの組の最大値のみを出力するレイヤーの２段階に分けて考えることも出来る。</p>
-
-<p>従来の畳み込みネットでは、畳み込みレイヤーの後に max pool レイヤーを入れて、例えば入力画像をサイズが 2x2 のサブ領域に分割し、それぞれの max を出力する、
-ということがおこなわれているが、やっている計算は maxout もこれと変わらない。
-ただ、従来の max pool レイヤーには、
-2次元イメージの特徴的なパターンのずれや回転などを吸収するという意味づけがされていたのに対し、
-maxout ではもっと本質的な役割を果たしている。</p>
-
-<p>この単純なアフィン変換と max からなるネットワークには、
-十分な数のノード／レイヤーを与えられれば、従来のシグモイドや tanh と同様に、どんな連続関数でも任意の精度で近似できる能力がある。
-イメージとしては、任意の連続関数はある凸関数 f, g を使って f - g と表すことができ、そして凸関数は十分な数の平面の max として近似できる、ということらしい。</p>
-
-<p>[2] の local winner-take-all (LWTA) も maxout と似ている。
-ただ、同じ組の中の最大値ではない値にも出力ノードが与えられ、これは 0 を出力するという点が違う。
-しかしこの違いが重要なものかどうかはよく分からない。
-LWTA を使うと一旦記憶したものを忘れにくいと説明しているが、
-これは単に 0 を出力するノードにも重みが与えられていてパラメターの数が多いからかもしれない。</p>
-
-<p>MNIST など実際のデータを使った実験では、maxout や LWTA と dropout を組み合わせた方法が従来の記録を更新する結果を出している。</p>
-
-<p>しかし tanh の計算やバックプロパゲーション・フェーズでの grad の計算がいらなくなるのはちょっと不思議な感じがする。
-今までだれもこのことを指摘しなかったのも不思議。案外こういった単純な確認が重要なのかも。
-double 型の tanh の計算の並列化のためにC++ AMP を使って GPU 上で計算しようとすると、Windows 7 では double 型は制限つきサポートになっていて、
-precise_math の関数が使えず割り算もできず大変だったのだが、今後は max の計算だけを考えればよいのかな。</p>
-
-<p><strong>リファレンス</strong><br />
-[1] Ian Goodfellow, David Warde-Farley, Mehdi Mirza, Aaron Courville, Yoshua Bengio. Maxout Networks. In Proceedings of the ICML, 2013.<br />
-[2] Rupesh K Srivastava, Jonathan Masci, Sohrob Kazerounian, Faustino Gomez, Jurgen Schmidhuber. Compete to Compute. In Proceedings NIPS, 2013.</p>
-]]></content>
-  </entry>
+<span class="categories">
   
-</feed>
+    <a class='category' href='/blog/categories/ai/'>AI</a>, <a class='category' href='/blog/categories/niyurarunetuto/'>ニューラルネット</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://kensak.github.io/blog/2014/02/12/connectionist-brain-model/" data-via="KenSakakibar" data-counturl="http://kensak.github.io/blog/2014/02/12/connectionist-brain-model/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/01/13/knuth-shuffle/" title="Previous Post: ランダムな置換とクヌース・シャッフル">&laquo; ランダムな置換とクヌース・シャッフル</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/12/connectionist-brain-model/">脳のコネクショニスト・モデル</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/13/knuth-shuffle/">ランダムな置換とクヌース・シャッフル</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/10/uploaded-charrecog/">CharRecog を GitHub にアップしました</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/29/maxout/">Maxout: アクティベーション関数に Max を使う</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/29/first-post/">初ポスト</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/ai/'>AI (1)</a></li><li><a href='/blog/categories/c-plus-plus/'>C++ (2)</a></li><li><a href='/blog/categories/opencv/'>OpenCV (1)</a></li><li><a href='/blog/categories/arugorizumu/'>アルゴリズム (1)</a></li><li><a href='/blog/categories/niyurarunetuto/'>ニューラルネット (3)</a></li><li><a href='/blog/categories/puroguramu/'>プログラム (1)</a></li><li><a href='/blog/categories/wen-zi-ren-shi/'>文字認識 (1)</a></li><li><a href='/blog/categories/lun-wen/'>論文 (1)</a></li></ul>
+</section>
+<section>
+  <h1>Tag Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/categories/ai' style='font-size: 120.0%'>AI(1)</a> <a href='/blog/categories/c-plus-plus' style='font-size: 140.0%'>C++(2)</a> <a href='/blog/categories/opencv' style='font-size: 120.0%'>OpenCV(1)</a> <a href='/blog/categories/arugorizumu' style='font-size: 120.0%'>アルゴリズム(1)</a> <a href='/blog/categories/niyurarunetuto' style='font-size: 160.0%'>ニューラルネット(3)</a> <a href='/blog/categories/puroguramu' style='font-size: 120.0%'>プログラム(1)</a> <a href='/blog/categories/wen-zi-ren-shi' style='font-size: 120.0%'>文字認識(1)</a> <a href='/blog/categories/lun-wen' style='font-size: 120.0%'>論文(1)</a> </span>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/kensak">@kensak</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'kensak',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<section>
+  <a class="twitter-timeline" href="https://twitter.com/search?q=%23%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92" data-widget-id="417340959202885632"></a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - 榊原 研 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+<script>
+(function(w,d){
+    var c,e=d.createDocumentFragment(),f=d.getElementsByTagName("script")[0],
+    a=function(a,b){if(!d.getElementById(b)){c=d.createElement("script");
+    c.src=a;c.id=b||null;c.async=true;e.appendChild(c);}};
+
+
+    a("//platform.twitter.com/widgets.js");
+
+
+    a("//b.st-hatena.com/js/bookmark_button_wo_al.js");
+    f.parentNode.insertBefore(e,f);
+})(this,document);
+</script>
+
+</body>
+</html>

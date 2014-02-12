@@ -101,6 +101,73 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2014/02/12/connectionist-brain-model/">脳のコネクショニスト・モデル</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-12T14:30:00+09:00" pubdate data-updated="true">2014-02-12</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="https://staff.aist.go.jp/y-ichisugi/j-index.html">産業技術総合研究所の一杉裕志氏のサイト</a>で
+氏は大脳皮質の計算論的モデル BESOM を提案しています。
+それは４つの機械学習技術（自己組織化マップ、ベイジアンネット、独立成分分析、強化学習）を
+組み合わせたもので、
+すでにプログラムがありソースコードも公開されています。
+その機能はもちろんまだ実際の人間の脳の機能からは程遠いとはいえ、
+ここまで具体的な脳のモデルを既知の技術の組み合わせにより提示できるということが、
+機械学習の進歩を物語っていると思います。</p>
+
+<p>実際の脳にできることを考えてみると、脳の機能をコンピューター上で実現しようとするときの必要条件が見えてきます。</p>
+
+<p>例えば</p>
+
+<ul>
+  <li>ニューロンの活動（化学的な反応）の遅さにも関わらす
+高速な処理が可能　→　大規模な並列計算が必要</li>
+  <li>人間の赤ん坊はさまざまな映像の中から一塊の物体や親の顔を認識するようになる
+→ 独立成分分析のような「抽象化」をおこなう仕組みが必要</li>
+  <li>快を求め不快を避けるという動物に共通した性質を実現するには強化学習のような
+ 「報酬」という概念を含む機構が必要</li>
+</ul>
+
+<p>ここで思考実験として、脳のコネクショニスト（つまりニューラル・ネットを用いた）モデルを
+人間の脳が持つ能力から逆算しながら構成するということを試みたいと思います。
+つまり、知能の個体発生（認知の発達過程）をたどりながら、人間の脳が備えている能力と、
+それをニューラル・ネットの手法によって実現する方法をボトム・アップに考えていきます。
+さらに他のモデルや技術と比較し、共通点や相違点についても考察します。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/02/12/connectionist-brain-model/">続きを読む &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2014/01/13/knuth-shuffle/">ランダムな置換とクヌース・シャッフル</a></h1>
     
     
@@ -306,6 +373,10 @@ MNIST 画像セットを使って autoencoding や dropout などの実験が簡
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/12/connectionist-brain-model/">脳のコネクショニスト・モデル</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/01/13/knuth-shuffle/">ランダムな置換とクヌース・シャッフル</a>
       </li>
     
@@ -325,11 +396,11 @@ MNIST 画像セットを使って autoencoding や dropout などの実験が簡
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/c-plus-plus/'>C++ (2)</a></li><li><a href='/blog/categories/opencv/'>OpenCV (1)</a></li><li><a href='/blog/categories/arugorizumu/'>アルゴリズム (1)</a></li><li><a href='/blog/categories/niyurarunetuto/'>ニューラルネット (2)</a></li><li><a href='/blog/categories/puroguramu/'>プログラム (1)</a></li><li><a href='/blog/categories/wen-zi-ren-shi/'>文字認識 (1)</a></li><li><a href='/blog/categories/lun-wen/'>論文 (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/ai/'>AI (1)</a></li><li><a href='/blog/categories/c-plus-plus/'>C++ (2)</a></li><li><a href='/blog/categories/opencv/'>OpenCV (1)</a></li><li><a href='/blog/categories/arugorizumu/'>アルゴリズム (1)</a></li><li><a href='/blog/categories/niyurarunetuto/'>ニューラルネット (3)</a></li><li><a href='/blog/categories/puroguramu/'>プログラム (1)</a></li><li><a href='/blog/categories/wen-zi-ren-shi/'>文字認識 (1)</a></li><li><a href='/blog/categories/lun-wen/'>論文 (1)</a></li></ul>
 </section>
 <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/c-plus-plus' style='font-size: 160.0%'>C++(2)</a> <a href='/blog/categories/opencv' style='font-size: 130.0%'>OpenCV(1)</a> <a href='/blog/categories/arugorizumu' style='font-size: 130.0%'>アルゴリズム(1)</a> <a href='/blog/categories/niyurarunetuto' style='font-size: 160.0%'>ニューラルネット(2)</a> <a href='/blog/categories/puroguramu' style='font-size: 130.0%'>プログラム(1)</a> <a href='/blog/categories/wen-zi-ren-shi' style='font-size: 130.0%'>文字認識(1)</a> <a href='/blog/categories/lun-wen' style='font-size: 130.0%'>論文(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/ai' style='font-size: 120.0%'>AI(1)</a> <a href='/blog/categories/c-plus-plus' style='font-size: 140.0%'>C++(2)</a> <a href='/blog/categories/opencv' style='font-size: 120.0%'>OpenCV(1)</a> <a href='/blog/categories/arugorizumu' style='font-size: 120.0%'>アルゴリズム(1)</a> <a href='/blog/categories/niyurarunetuto' style='font-size: 160.0%'>ニューラルネット(3)</a> <a href='/blog/categories/puroguramu' style='font-size: 120.0%'>プログラム(1)</a> <a href='/blog/categories/wen-zi-ren-shi' style='font-size: 120.0%'>文字認識(1)</a> <a href='/blog/categories/lun-wen' style='font-size: 120.0%'>論文(1)</a> </span>
 </section>
 
 <section>

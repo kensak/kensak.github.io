@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: ニューラルネット | AIへ秒読み]]></title>
-  <link href="http://kensak.github.io/blog/categories/niyurarunetuto/atom.xml" rel="self"/>
+  <title><![CDATA[Category: AI | AIへ秒読み]]></title>
+  <link href="http://kensak.github.io/blog/categories/ai/atom.xml" rel="self"/>
   <link href="http://kensak.github.io/"/>
   <updated>2014-02-12T14:32:15+09:00</updated>
   <id>http://kensak.github.io/</id>
@@ -193,80 +193,6 @@ $(y’, r) = \mathrm{T}(y)$ で得られる報酬 $r$ を大きくするよう�
 この EM 的な更新と recurrent 性により、遠い因果関係をたどったり、はるか未来に受け取るはずの報酬を最大化するなど、
 各モジュールにおいて複雑な関数を学習できる可能性があります。</p>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[CharRecog を GitHub にアップしました]]></title>
-    <link href="http://kensak.github.io/blog/2014/01/10/uploaded-charrecog/"/>
-    <updated>2014-01-10T22:20:53+09:00</updated>
-    <id>http://kensak.github.io/blog/2014/01/10/uploaded-charrecog</id>
-    <content type="html"><![CDATA[<p>ニューラルネットによる文字認識プログラム CharRecog を
-<a href="https://github.com/kensak/CharRecog">GitHub にアップしました</a>。</p>
-
-<h3 id="section">特徴</h3>
-<ul>
-  <li>C++ で作成。OpenCV の ANN_MLP クラスを参考に、コアの部分はゼロから書きなおしました。</li>
-  <li>並列処理 : インテル TBB、OpenMP, C++ AMP などを使い、マルチコア CPU や GPU による並列処理をおこなっています。</li>
-  <li>行列計算による高速化 : すべてのサンプル画像を処理する際、できるだけループを回さず一回の行列計算により処理をおこないます。</li>
-  <li>さまざまな手法への対応 : autoencoding, convolutional layer, max pooling, maxout, dropout の各手法や
-入力画像のランダムな affine 変換などに対応しています。</li>
-  <li>ビルド済み実行ファイルでは float で計算をおこないますが、ソースを一ヶ所変更してリビルドすれば double にも対応します。</li>
-  <li>学習された重みを画像として出力できます。</li>
-</ul>
-
-<p>すぐに使えるよう 64 ビット版のバイナリもアップしています。
-MNIST 画像セットを使って autoencoding や dropout などの実験が簡単におこなえます。</p>
-
-<p>今後も気になる手法があればインプリメントしていく予定です。
-また、画像認識や言語処理のための高速なNNエンジンとしても使えるようにしていきたい。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Maxout: アクティベーション関数に Max を使う]]></title>
-    <link href="http://kensak.github.io/blog/2013/12/29/maxout/"/>
-    <updated>2013-12-29T23:26:44+09:00</updated>
-    <id>http://kensak.github.io/blog/2013/12/29/maxout</id>
-    <content type="html"><![CDATA[<p>とても似た内容の二つの論文を読んでみました。
-多層パーセプトロンのアクティベーション関数としてシグモイドや tanh のかわりに max を使うと文字認識などでの認識率が上がる、という話です。</p>
-
-<!-- more -->
-
-<p>[1] の maxout レイヤーでは、レイヤーの入力に重みを掛けてバイアスと一緒に足し合わせたあと、
-従来のように tanh やシグモイドなどの関数を適用するのではなく、
-出力をいくつかずつまとめてそれらの中の最大値を最終的な出力とする。</p>
-
-<p>これは、アクティベーション関数として恒等関数を使うパーセンプトロンまたは畳み込みレイヤーと、
-入力をいくつかずつ組にしてそれぞれの組の最大値のみを出力するレイヤーの２段階に分けて考えることも出来る。</p>
-
-<p>従来の畳み込みネットでは、畳み込みレイヤーの後に max pool レイヤーを入れて、例えば入力画像をサイズが 2x2 のサブ領域に分割し、それぞれの max を出力する、
-ということがおこなわれているが、やっている計算は maxout もこれと変わらない。
-ただ、従来の max pool レイヤーには、
-2次元イメージの特徴的なパターンのずれや回転などを吸収するという意味づけがされていたのに対し、
-maxout ではもっと本質的な役割を果たしている。</p>
-
-<p>この単純なアフィン変換と max からなるネットワークには、
-十分な数のノード／レイヤーを与えられれば、従来のシグモイドや tanh と同様に、どんな連続関数でも任意の精度で近似できる能力がある。
-イメージとしては、任意の連続関数はある凸関数 f, g を使って f - g と表すことができ、そして凸関数は十分な数の平面の max として近似できる、ということらしい。</p>
-
-<p>[2] の local winner-take-all (LWTA) も maxout と似ている。
-ただ、同じ組の中の最大値ではない値にも出力ノードが与えられ、これは 0 を出力するという点が違う。
-しかしこの違いが重要なものかどうかはよく分からない。
-LWTA を使うと一旦記憶したものを忘れにくいと説明しているが、
-これは単に 0 を出力するノードにも重みが与えられていてパラメターの数が多いからかもしれない。</p>
-
-<p>MNIST など実際のデータを使った実験では、maxout や LWTA と dropout を組み合わせた方法が従来の記録を更新する結果を出している。</p>
-
-<p>しかし tanh の計算やバックプロパゲーション・フェーズでの grad の計算がいらなくなるのはちょっと不思議な感じがする。
-今までだれもこのことを指摘しなかったのも不思議。案外こういった単純な確認が重要なのかも。
-double 型の tanh の計算の並列化のためにC++ AMP を使って GPU 上で計算しようとすると、Windows 7 では double 型は制限つきサポートになっていて、
-precise_math の関数が使えず割り算もできず大変だったのだが、今後は max の計算だけを考えればよいのかな。</p>
-
-<p><strong>リファレンス</strong><br />
-[1] Ian Goodfellow, David Warde-Farley, Mehdi Mirza, Aaron Courville, Yoshua Bengio. Maxout Networks. In Proceedings of the ICML, 2013.<br />
-[2] Rupesh K Srivastava, Jonathan Masci, Sohrob Kazerounian, Faustino Gomez, Jurgen Schmidhuber. Compete to Compute. In Proceedings NIPS, 2013.</p>
 ]]></content>
   </entry>
   
