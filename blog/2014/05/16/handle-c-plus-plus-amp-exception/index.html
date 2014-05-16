@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: OpenCV - AIへ秒読み</title>
+  <title>C++ AMP の例外の処理 - AIへ秒読み</title>
   <meta name="author" content="榊原 研">
 
   
-  <meta name="description" content="Category: OpenCV">
+  <meta name="description" content="C++ AMP を通して GPU 上で計算をしていると、TDR という仕組みによる例外が発生することがあります。 TDR とその対応については以下のページに詳しく解説されています。 Handling TDRs in C++ AMP TDR による例外が発生したときに自動的に計算サイズを調整して &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://kensak.github.ioblog/categories/opencv">
+  <link rel="canonical" href="http://kensak.github.io/blog/2014/05/16/handle-c-plus-plus-amp-exception">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="AIへ秒読み" type="application/atom+xml">
@@ -93,36 +93,115 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="page-content">
-<article role="article">
+      <div>
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: OpenCV</h1>
+    
+      <h1 class="entry-title">C++ AMP の例外の処理</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-16T13:45:05+09:00" pubdate data-updated="true">2014-05-16</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>C++ AMP を通して GPU 上で計算をしていると、TDR という仕組みによる例外が発生することがあります。</p>
 
-  
-  <h2>2014</h2>
+<p>TDR とその対応については以下のページに詳しく解説されています。</p>
 
-<article>
-  
-<h1><a href="/blog/2014/01/10/uploaded-charrecog/">CharRecog を GitHub にアップしました</a></h1>
-<time datetime="2014-01-10T22:20:53+09:00" pubdate><span class='month'>Jan</span> <span class='day'>10</span> <span class='year'>2014</span></time>
+<p><a href="http://blogs.msdn.com/b/nativeconcurrency/archive/2012/03/06/handling-tdrs-in-c-amp.aspx">Handling TDRs in C++ AMP</a></p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/c-plus-plus/'>C++</a>, <a class='category' href='/blog/categories/opencv/'>OpenCV</a>, <a class='category' href='/blog/categories/niyurarunetuto/'>ニューラルネット</a>, <a class='category' href='/blog/categories/puroguramu/'>プログラム</a>, <a class='category' href='/blog/categories/wen-zi-ren-shi/'>文字認識</a></span>
-</footer>
+<!-- more -->
 
+<p>TDR による例外が発生したときに自動的に計算サイズを調整して
+復帰する<a href="https://github.com/kensak/CharRecog/blob/master/src/NeuralNet.cpp">コード</a>を紹介します。</p>
 
-</article>
+<p>elemMul_sub_GPU と elemMul という関数は2つの行列の要素ごとの掛け算を行ないます。
+（どちらもパラメターとして2つの行列をとるものと3つの行列をとるものがあります。）</p>
 
+<p>matMul_sub_GPU と matMul は行列の掛け算を行ないます。GPU が利用できない時は cv::gemm を呼び出します。</p>
+
+<p>これらのコードは以下のライブラリに依存しています。</p>
+
+<ul>
+  <li>
+    <p>OpenCV 2.4.3<br />
+<a href="http://sourceforge.net/projects/opencvlibrary/files/opencv-win/">ここ</a>からダウンロードできます。  </p>
+  </li>
+  <li>
+    <p>C++ AMP BLAS Library 1.0<br />
+<a href="http://ampblas.codeplex.com/releases/view/92383">ここ</a>からダウンロードできます。  </p>
+  </li>
+</ul>
+
+<p>rowBlockSize がブロックサイズです。行列を rowBlockSize 行ごとに切り分けて計算しています。
+例外が発生するとブロックサイズを 1/2 にしてリトライします。ブロックサイズが 100 未満になるとあきらめます。</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">榊原 研</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-16T13:45:05+09:00" pubdate data-updated="true">2014-05-16</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/c-plus-plus-amp/'>C++AMP</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://kensak.github.io/blog/2014/05/16/handle-c-plus-plus-amp-exception/" data-via="KenSakakibar" data-counturl="http://kensak.github.io/blog/2014/05/16/handle-c-plus-plus-amp-exception/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/02/12/connectionist-brain-model/" title="Previous Post: 脳のコネクショニスト・モデル">&laquo; 脳のコネクショニスト・モデル</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
 </div>

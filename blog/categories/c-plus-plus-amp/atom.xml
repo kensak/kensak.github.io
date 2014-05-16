@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: C++AMP | AIへ秒読み]]></title>
+  <link href="http://kensak.github.io/blog/categories/c-plus-plus-amp/atom.xml" rel="self"/>
+  <link href="http://kensak.github.io/"/>
+  <updated>2014-05-16T13:59:38+09:00</updated>
+  <id>http://kensak.github.io/</id>
+  <author>
+    <name><![CDATA[榊原 研]]></name>
+    <email><![CDATA[ken.sakakibar@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[C++ AMP の例外の処理]]></title>
+    <link href="http://kensak.github.io/blog/2014/05/16/handle-c-plus-plus-amp-exception/"/>
+    <updated>2014-05-16T13:45:05+09:00</updated>
+    <id>http://kensak.github.io/blog/2014/05/16/handle-c-plus-plus-amp-exception</id>
+    <content type="html"><![CDATA[<p>C++ AMP を通して GPU 上で計算をしていると、TDR という仕組みによる例外が発生することがあります。</p>
+
+<p>TDR とその対応については以下のページに詳しく解説されています。</p>
+
+<p><a href="http://blogs.msdn.com/b/nativeconcurrency/archive/2012/03/06/handling-tdrs-in-c-amp.aspx">Handling TDRs in C++ AMP</a></p>
+
+<!-- more -->
+
+<p>TDR による例外が発生したときに自動的に計算サイズを調整して
+復帰する<a href="https://github.com/kensak/CharRecog/blob/master/src/NeuralNet.cpp">コード</a>を紹介します。</p>
+
+<p>elemMul_sub_GPU と elemMul という関数は2つの行列の要素ごとの掛け算を行ないます。
+（どちらもパラメターとして2つの行列をとるものと3つの行列をとるものがあります。）</p>
+
+<p>matMul_sub_GPU と matMul は行列の掛け算を行ないます。GPU が利用できない時は cv::gemm を呼び出します。</p>
+
+<p>これらのコードは以下のライブラリに依存しています。</p>
+
+<ul>
+  <li>
+    <p>OpenCV 2.4.3<br />
+<a href="http://sourceforge.net/projects/opencvlibrary/files/opencv-win/">ここ</a>からダウンロードできます。  </p>
+  </li>
+  <li>
+    <p>C++ AMP BLAS Library 1.0<br />
+<a href="http://ampblas.codeplex.com/releases/view/92383">ここ</a>からダウンロードできます。  </p>
+  </li>
+</ul>
+
+<p>rowBlockSize がブロックサイズです。行列を rowBlockSize 行ごとに切り分けて計算しています。
+例外が発生するとブロックサイズを 1/2 にしてリトライします。ブロックサイズが 100 未満になるとあきらめます。</p>
+]]></content>
+  </entry>
+  
+</feed>
